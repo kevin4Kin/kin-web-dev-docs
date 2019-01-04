@@ -1,7 +1,7 @@
 ---
-id: HiKin
-title: Hello World
-sidebar_label: HiKin Android
+id: quick-start
+title: Quick Start
+
 ---
 
 
