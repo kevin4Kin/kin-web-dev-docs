@@ -4,7 +4,7 @@ title: Document TOC
 ---
 ## Lorem
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.
+This is a working TOC for development purposes. It is anticipated that the page will be withdrawn when navigation is provided by full site design.
 
 ## [Quick Start](quick-start/quick-start.md)
 
