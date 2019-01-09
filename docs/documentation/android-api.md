@@ -2,7 +2,6 @@
 id: android-api
 title: Android API
 ---
-## Android API
 
 You can call up documentation for the Kin Android SDK API from within Android Studio or other IDEs. By accessing documentation within your IDE you're assured of seeing the most up-to-date descriptions and usages.
 
