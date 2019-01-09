@@ -20,8 +20,6 @@ This SDK overview is organized into a few key sections:
 	* [Testing](#testing)
 	* [Building from Source](#building-from-source)
 * [Sample Code](#sample-code)
-* [Contributing](#contributing)
-* [License](#license)
 
 ## Installation
 
