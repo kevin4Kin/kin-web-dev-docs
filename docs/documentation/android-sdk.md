@@ -71,7 +71,7 @@ Android apps that allow users to earn, spend, and manage Kin are considered clie
 kinClient = new KinClient(context, Environment.TEST, "1acd", "user1")
 ```
 
-You declare *which* Kin blockchain you want to work with using the predefined static variable `Environment.TEST` or  `Environment.PRODUCTION`. 
+You declare *which* Kin blockchain environment you want to work with using the predefined static variable `Environment.TEST` or  `Environment.PRODUCTION`. 
 
 Each environment variable includes:
 
