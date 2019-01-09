@@ -4,7 +4,14 @@ title: Android API
 ---
 ## Android API
 
-The Android API is documented in docstrings embedded in the SDK so you can access the most up-to-date documentation from within Android Studio.
+Document comments within Kin SDK for Android files provides API documentation within Android Studio and other IDEs. By accessing documentation within your IDE you're assured of seeing the most up-to-date descriptions and usages.
+
+For example, see documentation for 
+
+![](android-sdk-embedded-documentation-1.png)
+
+![](android-sdk-embedded-documentation-2.png)
+
 
 
 
