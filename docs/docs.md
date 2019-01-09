@@ -13,7 +13,7 @@ This is a working TOC for development purposes. It is anticipated that the page 
 
 ## [Documentation](documentation/introduction.md)
 
-- [Introduction](documentation/kin-architecture-overview.md)
+- [Architecture overview](documentation/kin-architecture-overview.md)
 - [Android SDK](documentation/android-sdk.md)
 - [Android API](documentation/android-api.md)
 - [iOS SDK](documentation/ios-sdk.md)
