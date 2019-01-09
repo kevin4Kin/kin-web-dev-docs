@@ -62,9 +62,9 @@ Adding Kin features to your Android client requires three steps.
 - Managing Kin accounts
 - Executing transactions against Kin accounts.   
 
-### Accessing a Kin blockchain
+### Accessing the Kin blockchain
 
-Android apps that allow users to earn, spend, and manage Kin are considered clients in the Kin architecture. The following statement creates `kinClient` which includes methods to manage accounts on a Kin blockchain. 
+Android apps that allow users to earn, spend, and manage Kin are considered clients in the Kin architecture. The following statement creates `kinClient` which includes methods to manage accounts on the Kin blockchain. 
 
 
 ```java
@@ -190,7 +190,7 @@ balanceRequest.run(new ResultCallback<Balance>() {
 
 ### Transactions
 
-Transactions are executed on a Kin blockchain in a two-step process.
+Transactions are executed on the Kin blockchain in a two-step process.
 
 - **Build** the transaction, including calculation of the transaction hash. The hash is used as a transaction ID and is necessary to query the status of the transaction.
 - **Send** the transaction to servers for execution on the blockchain.
