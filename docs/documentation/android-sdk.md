@@ -123,8 +123,6 @@ kinClient.deleteAccount(int index);
 
 Before a new account can be used it must be added to the blockchain in a process called onboarding. To be of much use the onboarded account will need to receive funds. 
 
-When you're working in Kin Playground, your accounts can receive small amounts of funds from a service such as the [Fee token faucet service](fee-faucet.md).
-
 For code details see the [Sample App](https://github.com/kinecosystem/kin-sdk-android/tree/dev/sample/)'s [OnBoarding](https://github.com/kinecosystem/kin-sdk-android/blob/master/sample/src/main/java/kin/sdk/sample/OnBoarding.java) class.
 
 #### Public Address
