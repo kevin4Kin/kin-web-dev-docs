@@ -2,7 +2,7 @@
 id: quick-start
 title: Quick Start
 ---
-For a quick introduction into integrating Kin features into your service, start with this [overview of the Kin architecture.](/documentation/introduction.md)
+For a quick introduction into integrating Kin features into your service, start with this [overview of the Kin architecture.](/docs/documentation/introduction.md)
 
 Then jump right into coding topics with the [Hello World - Android](hi-kin-android.md) example.
 
