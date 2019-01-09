@@ -2,10 +2,10 @@
 id: quick-start
 title: Quick Start
 ---
+For a quick introduction into integrating Kin features into your service, start with this [overview of the Kin architecture.](/documentation/introduction.md)
 
+Then jump right into coding topics with the [Hello World - Android](hi-kin-android.md) example.
 
+After you understand client-side coding, [Hello World - Python](hi-kin-python.md) provides an introduction to coding the server side of your offering.
 
-## Lorem
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.
 
