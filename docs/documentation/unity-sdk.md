@@ -1,9 +1,7 @@
 ---
 id: unity-sdk
-title: Unity SDK
+title: Kin SDK for Unity
 ---
-# Kin SDK for Unity
-
 Unity plugin responsible for providing access to the Kin native SDKs for managing Kin balance and transactions.
 
 
