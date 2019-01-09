@@ -8,9 +8,9 @@ Document comments within Kin SDK for Android files provides API documentation wi
 
 For example, see documentation for 
 
-![](android-sdk-embedded-documentation-1.png)
+![](/img/android-sdk-embedded-documentation-1.png)
 
-![](android-sdk-embedded-documentation-2.png)
+![](/img/android-sdk-embedded-documentation-2.png)
 
 
 
