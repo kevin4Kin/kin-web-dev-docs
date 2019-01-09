@@ -1,6 +1,6 @@
 ---
-id: documentation
-title: Documentation intro
+id: kin-architecture-overview
+title: Kin architecture overview
 ---
 ## Lorem
 
