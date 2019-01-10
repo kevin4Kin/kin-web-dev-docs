@@ -17,7 +17,7 @@ This is a working TOC for development purposes. It is anticipated that the page 
 - [Android SDK](documentation/android-sdk.md)
 - [Android API](documentation/android-api.md)
 - [iOS SDK](documentation/ios-sdk.md)
-- [iOS API](documentation/ios-api.md)
+- [iOS API](https://accuratekevin.github.io/kevinsharp.github.io/ios-api-reference/)
 - [Unity SDK](documentation/unity-sdk.md)
 - [Unity API](documentation/unity-api.md)
 - [Python SDK](documentation/python-sdk.md)
