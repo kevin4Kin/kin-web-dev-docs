@@ -21,7 +21,7 @@ This is a working TOC for development purposes. It is anticipated that the page 
 - [Unity SDK](documentation/unity-sdk.md)
 - [Unity API](documentation/unity-api.md)
 - [Python SDK](documentation/python-sdk.md)
-- [Python API](documentation/python-api.md)
+- [Python API](https://accuratekevin.github.io/kevinsharp.github.io/python-api-reference/)
 
 ## [Knowledge base](knowledge-base/knowledge-base.md)
 
