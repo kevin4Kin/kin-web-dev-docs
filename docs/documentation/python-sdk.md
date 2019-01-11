@@ -3,14 +3,19 @@ id: python-sdk
 title: Python SDK
 ---
 
-![Kin Logo](kin.png)  ![Stelalr Logo](stellar.png)
+![Kin Logo](kin.png)
 
-# KIN Python SDK for Stellar Blockchain
+# KIN Python SDK for Kin Blockchain
 [![Build Status](https://travis-ci.org/kinecosystem/kin-core-python.svg?branch=master)](https://travis-ci.org/kinecosystem/kin-core-python) [![Coverage Status](https://codecov.io/gh/kinecosystem/kin-core-python/branch/master/graph/badge.svg)](https://codecov.io/gh/kinecosystem/kin-core-python)
 
 ## Disclaimer
 
-The SDK is still in beta. No warranties are given, use on your own discretion.
+This documentation is still incomplete. TODO:
+- review general structure is aligned with other readme files
+- review language
+- check code samples and calls to the Kin SDK
+- confirm min required minor version of Python
+- remove all references to Stellar and replace with Kin Blockchain
 
 ## Requirements.
 
