@@ -4,7 +4,7 @@ title: Quick Start
 ---
 For a quick introduction into integrating Kin features into your service, start with this [overview of the Kin architecture.](documentation/kin-architecture-overview.md)
 
-Then jump right into coding topics with the [Hello World - Android](hi-kin-android.md) example.
+Then jump right into coding topics with the [Hello World - Android](hi-kin-android.md) or [Hello World - iOS](hi-kin-ios.md) examples.
 
 After you understand client-side coding, [Hello World - Python](hi-kin-python.md) provides an introduction to coding the server side of your offering.
 
