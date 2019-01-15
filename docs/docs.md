@@ -11,7 +11,7 @@ This is a working TOC for development purposes. It is anticipated that the page 
 - [Hello user world](quick-start/hi-kin-android.md)
 - [Hello server world](quick-start/hi-kin-python.md)
 
-## [Documentation](documentation/introduction.md)
+## [Documentation](documentation/documentation.md)
 
 - [Architecture overview](documentation/kin-architecture-overview.md)
 - [Android SDK](documentation/android-sdk.md)
@@ -23,5 +23,5 @@ This is a working TOC for development purposes. It is anticipated that the page 
 - [Python SDK](documentation/python-sdk.md)
 - [Python API](https://accuratekevin.github.io/kevinsharp.github.io/python-api-reference/)
 
-## [Knowledge base](knowledge-base/knowledge-base.md)
+
 

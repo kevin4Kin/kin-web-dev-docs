@@ -43,13 +43,13 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/kin-logo.png',
+  footerIcon: 'img/kin-logo.png',
+  favicon: 'img/kin-logo.png',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2E8555',
+    primaryColor: '#303E9F',
     secondaryColor: '#205C3B',
   },
 
