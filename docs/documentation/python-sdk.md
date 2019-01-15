@@ -288,7 +288,7 @@ Transactions are executed on the Kin blockchain in a two-step process.
 #### Transferring Kin to another account
 To transfer Kin to another account, you need the public address of the account to which you want to transfer Kin.
 
-By default, your user will need to spend Fee to transfer Kin or process any other blockchain transaction. Fee for individual transactions are trivial (1 Fee = 10<sup>-5</sup> Kin).
+By default, your user will need to spend Fee to transfer Kin or process any other blockchain transaction. Fee for individual transactions are trivial 1 Kin = 10E5 Fee.
 
 Some apps can be added to the Kin whitelist, a set of pre-approved apps whose users will not be charged Fee to execute transactions. If your app is in the whitelist then refer to transferring Kin to another account using whitelist service.
 
