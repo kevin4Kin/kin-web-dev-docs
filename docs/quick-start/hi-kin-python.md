@@ -57,7 +57,7 @@ pprint(vars(client.environment))
 ```
 ###### Output:
 
-![](/img/HWPython/1_Py_Environment.png)
+![](../../img/HWPython/1_Py_Environment.png)
 
 #### Get a keypair
 Now that the Kin client is properly setup we are ready to either open or create the first account. Accounts always have a keypair of public address (the public address on the blockchain) and the secret seed. These are often also called respectively the public key and private key. *Remember to never share your private keys! ;)*
@@ -83,7 +83,7 @@ pprint(vars(keypair))
 
 ###### Output:
 
-![](/img/HWPython/2_Py_AccountCreate.png)
+![](../../img/HWPython/2_Py_AccountCreate.png)
 
 #### Check account existence and create
 Now that we have a keypair we can check if the account already exists on the blockchain and if not create it. Something important to remember is that creating a keypair does not mean that the account exists or is valid on the blockchain.
@@ -105,7 +105,7 @@ account = client.kin_account(keypair.secret_seed)
 
 ###### Output:
 
-![](/img/HWPython/3_AccountCreated.png)
+![](../../img/HWPython/3_AccountCreated.png)
 
 We are not going to cover the `friendbot` in this tutorial, but when you are ready you should read [this].
 
@@ -131,7 +131,7 @@ print('\nWe created the account and a confirmation with transaction id: {}'.form
 
 ###### Output:
 
-![](/img/HWPython/4_AccountCreate2.png)
+![](../../img/HWPython/4_AccountCreate2.png)
 
 ### Get the details of a transaction
 Every operation on the Kin blockchain is a transaction, so let's print information about the last action we performed.
@@ -146,7 +146,7 @@ pprint(vars(transaction))
 
 ###### Output:
 
-![](/img/HWPython/5_AccountCreationTxInfo.png)
+![](../../img/HWPython/5_AccountCreationTxInfo.png)
 
 ### Send Kin
 Now that we have a destination public address we can send our first Kin. `new_keypair` holds the information of the destination account, we are going to send 10 Kin and in order to execute the transaction we are also going to pay 100 Fee. To learn more about transaction fees and whitelisting see [Whitelist].
@@ -158,7 +158,7 @@ print('The transaction succeeded with hash {}'.format(tx_hash))
 
 ###### Output:
 
-![](/img/HWPython/6_SendKinTxHash.png)
+![](../../img/HWPython/6_SendKinTxHash.png)
 
 Check and print transaction details.
 
@@ -172,7 +172,7 @@ pprint(vars(transaction))
 
 ###### Output:
 
-![](/img/HWPython/7_SendKinTxDetail.png)
+![](../../img/HWPython/7_SendKinTxDetail.png)
 
 Lastly, check the updated balance.
 
