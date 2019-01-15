@@ -3,11 +3,11 @@ id: hi-kin-python
 title: Hello World with the Python SDK
 ---
 
-With the Kin SDK for Python you can give your users fun ways to earn and spend Kin in your app and help us build a whole new digital world. If you’re just getting started with Kin ecosystem we suggest you spend a few minutes reading this [overview of the Kin architecture.](documentation/kin-architecture-overview.md)
+With the Kin SDK for Python you can create a server back-end to support your client apps and integrate Kin. If you’re just getting started with Kin ecosystem we suggest you spend a few minutes reading this [overview of the Kin architecture.](documentation/kin-architecture-overview.md)
 
-The Hello World script for your server upgrade is `main.py`. It implements the most basic functions of the Kin SDK for Python showing you how to create an account on the Kin blockchain, execute a transaction and read the user's current balance.
+The following tutorial is meant to run on a server and will serve as a crash course on the basic functionalities of the Kin SDK for Python. As you implement Kin in your service you should wrap this SDK in your back-end services as you see fit. Here we will simply look at the most basic functions of the Kin SDK for Python showing you how to create an account on the Kin blockchain, execute a transaction and read the user's current balance.
 
-It operates in the Kin Playground environment where you can develop and test your Kin integration with up to 1000 users.
+This tutorial operates in the Kin Playground environment where you can develop and test your Kin integration.
 
 This tutorial is designed to take you from start to finish in 5 minutes or less, so get ready!
 
@@ -15,9 +15,6 @@ This tutorial is designed to take you from start to finish in 5 minutes or less,
 This is still a work in progress and subject to change.
 
 TODO:
-- Correct link to Python SDK repo
-- Update download link for `main.py`
-- Add link to the Intro to Kin
 - add link explaining what the friendbot is
 - Add link about fees and whitelisting in the "Send Kin" chapter
 
@@ -56,7 +53,7 @@ pprint(vars(client.environment))
 ```
 ###### Output:
 
-![](/img/HWPython/1_Py_Environment.png)
+![](../../img/HWPython/1_Py_Environment.png)
 
 #### Get a keypair
 With a `KinClient` instantiated you are ready to either open or create the first account. Accounts always have a keypair of public address (the public address on the blockchain) and secret seed. These are often also called respectively the public key and private key. *Remember to never share your private keys!*
@@ -82,7 +79,7 @@ pprint(vars(keypair))
 
 ###### Output:
 
-![](/img/HWPython/2_Py_AccountCreate.png)
+![](../../img/HWPython/2_Py_AccountCreate.png)
 
 #### Check account existence and create
 Now that you have a keypair you can check if the associated account already exists on the blockchain. If not you'll create it.
@@ -106,7 +103,7 @@ account = client.kin_account(keypair.secret_seed)
 
 ###### Output:
 
-![](/img/HWPython/3_AccountCreated.png)
+![](../../img/HWPython/3_AccountCreated.png)
 
 Details of the `friendbot` service are too detailed for our Hello World tutorial, so when you're ready you should read [this].
 
@@ -132,7 +129,7 @@ print('\nAccount created with transaction id: {}'.format(tx_hash))
 
 ###### Output:
 
-![](/img/HWPython/4_AccountCreate2.png)
+![](../../img/HWPython/4_AccountCreate2.png)
 
 ### Get the details of a transaction
 Let's print information about the last action performed.
@@ -147,10 +144,10 @@ pprint(vars(transaction))
 
 ###### Output:
 
-![](/img/HWPython/5_AccountCreationTxInfo.png)
+![](../../img/HWPython/5_AccountCreationTxInfo.png)
 
 ### Send Kin
-Now that you have a destination public address you can send Kin to the associated account. `new_keypair` holds the information of the destination account. You are going to send 10 KIN. Executing this transaction will by default incur a cost of 100 FEE. (1 KIN = 10<sup>-5</sup> FEE) 
+Now that you have a destination public address you can send Kin to the associated account. `new_keypair` holds the information of the destination account. You are going to send 10 KIN. Executing this transaction will by default incur a cost of 100 FEE. (1 KIN = 10<sup>-5</sup> FEE)
 
 Not all transactions executed on the blockchain will be charged Fee. To learn more about transaction fees and whitelisting, see [Whitelist].
 
@@ -161,7 +158,7 @@ print('The transaction succeeded with hash {}'.format(tx_hash))
 
 ###### Output:
 
-![](/img/HWPython/6_SendKinTxHash.png)
+![](../../img/HWPython/6_SendKinTxHash.png)
 
 Check and print transaction details.
 
@@ -175,7 +172,7 @@ pprint(vars(transaction))
 
 ###### Output:
 
-![](/img/HWPython/7_SendKinTxDetail.png)
+![](../../img/HWPython/7_SendKinTxDetail.png)
 
 Lastly, check the updated balance.
 
@@ -184,4 +181,10 @@ print('After the transaction the new balance is {}'.format(client.get_account_ba
 ```
 
 # Conclusions
-This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and support the interface between your client apps and the Kin blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
+This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the between your client apps and the Kin blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
+
+# Downloads
+
+Download the full [main.py](main.py) for your convenience.
+
+Track progress and download the Python SDK on [GitHub](https://github.com/kinecosystem/kin-sdk-python/tree/v2-master).

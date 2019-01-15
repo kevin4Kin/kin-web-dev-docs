@@ -17,11 +17,11 @@ This is a working TOC for development purposes. It is anticipated that the page 
 - [Android SDK](documentation/android-sdk.md)
 - [Android API](documentation/android-api.md)
 - [iOS SDK](documentation/ios-sdk.md)
-- [iOS API](https://accuratekevin.github.io/kevinsharp.github.io/ios-api-reference/)
+- [iOS API](documentation/ios-api.md)
 - [Unity SDK](documentation/unity-sdk.md)
 - [Unity API](documentation/unity-api.md)
 - [Python SDK](documentation/python-sdk.md)
-- [Python API](https://accuratekevin.github.io/kevinsharp.github.io/python-api-reference/)
+- [Python API](documentation/python-api.md)
 
 
 
