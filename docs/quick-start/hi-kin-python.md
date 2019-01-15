@@ -181,14 +181,10 @@ print('After the transaction the new balance is {}'.format(client.get_account_ba
 ```
 
 # Conclusions
-<<<<<<< HEAD
-This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the interface between your client apps and the Kin Blockchain and it packs a lot more features such as channels.
+This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the between your client apps and the Kin blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
 
 # Downloads
 
 Download the full [main.py](main.py) for your convenience.
 
 Track progress and download the Python SDK on [GitHub](https://github.com/kinecosystem/kin-sdk-python/tree/v2-master).
-=======
-This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and support the interface between your client apps and the Kin blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
->>>>>>> bdd2cf5e94ff48bcb13d81dc7f7b5383df290b1e
