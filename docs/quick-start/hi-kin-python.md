@@ -2,10 +2,9 @@
 id: hi-kin-python
 title: Hello World with the Python SDK
 ---
-# Hello World with the Python SDK
 `main.py` is the Hello World script for Kin development with Python. `main.py` implements the most basic functions of the Kin SDK for Python showing you how to create an account on the Kin blockchain, execute a transaction and read the user's current balance.
 
-It operates in the Kin Playground environment dedicated to Kin development where you can develop and test your Kin integration with up to 1000 users.
+It operates in the Kin testnet environment dedicated to Kin development where you can develop and test your Kin integration. Here you are free to create all accounts you need and you can also have some initial funding using `friendbot`.
 
 Please note that the Python SDK is meant to be part of a server-side implementation to pair with one of our client SDK, such as iOS and Android. To better understand the architecture of the Kin Blockchain and the available SDKs look at [Introduction to Kin]
 
@@ -15,8 +14,6 @@ We plan to take you from start to finish in 5 minutes or less, so get ready!
 This is still a work in progress and some parts might be incomplete or inaccurate.
 
 TODO:
-- Correct link to Python SDK repo
-- Update download link for `main.py`
 - Add link to the Intro to Kin
 - add link explaining what the friendbot is
 - Add link about fees and whitelisting in the "Send Kin" chapter
@@ -182,3 +179,9 @@ print('After the transaction the new balance is {}'.format(client.get_account_ba
 
 # Conclusions
 This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the interface between your client apps and the Kin Blockchain and it packs a lot more features such as channels.
+
+# Downloads
+
+Download the full [main.py](main.py) for your convenience.
+
+Track progress and download the Python SDK on [GitHub](https://github.com/kinecosystem/kin-sdk-python/tree/v2-master).
