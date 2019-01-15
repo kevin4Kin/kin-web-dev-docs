@@ -3,7 +3,7 @@ id: hi-kin-ios
 title: Hello World with the iOS SDK
 ---
 
-# Tutorial for Kin SDK for iOS
+# Hello World with the iOS SDK
 
 This tutorial will help you get started with the Kin SDK for iOS.
 
@@ -14,12 +14,11 @@ Get the full introduction about the Kin ecosystem [here](https://kinecosystem.gi
 
 See all the code for this tutorial in [ViewController.swift](ViewController.swift)
 
-## Install the Kin SDK with [Cocoapods](https://cocoapods.org/)
+## Install the Kin SDK
 
-Let’s start by installing the Kin SDK for iOS ([github.com/kinecosystem/kin-sdk-ios](https://github
-.com/kinecosystem/kin-sdk-ios) in your iOS app.
+Let’s start by installing the [Kin SDK for iOS](https://github.com/kinecosystem/kin-sdk-ios) in your iOS app.
 
-Add  `pod 'KinSDK', '~> 0.8.0’`  to your Podfile then run `pod install`.
+Add  `pod 'KinSDK', '~> 0.8.0’`  to your Podfile then run `pod install`. We use Cocoapods for convenience, if you are not familiar visit [Cocoapods.org](https://cocoapods.org/).
 
 Make sure you have the latest release of the SDK by checking the release page [github
 .com/kinecosystem/kin-sdk-ios/releases](https://github.com/kinecosystem/kin-sdk-ios/releases).
@@ -27,15 +26,12 @@ Make sure you have the latest release of the SDK by checking the release page [g
 If you ran `pod install` for the first time, close the`.xcproject` and open the `.xcworkspace` project.
 
 
-## The environments
+## Environments
 
-In this tutorial, we are using the playground environment. The playground environment allows us to create accounts, fund them and
- send kins between accounts via transactions, all with the purpose of getting started and testing our app.
+In this tutorial, we are using the Playground environment. The Playground environment allows us to create accounts, fund them and send Kin between accounts.
 The Kin Playground environment is dedicated to Kin development where you can develop and test your Kin integration with up to 1000 users.
 
-Transition to the main environment when your app is ready for production. The main environment works similarly,
-except that it does not allow the free funding of accounts. In the main environment, an account can only be funded by
- being sent kins from another account.
+Transition to the main environment when your app is ready for production. The Playground environment is meant to be as close as possible to the Production environment with the exception of funding accounts. In the main environment, an account can only be funded by receiving Kin from another account.
 
 ## Getting started with the Kin SDK
 
@@ -114,7 +110,7 @@ account.publicAddress
 
 If you want to make sure there are no account stored locally, delete the first account.
 
-:warning: If the account has not been backed up previously by exporting it, it will be lost and its kins inaccessible.
+:warning: If the account has not been backed up previously by exporting it, it will be lost and its Kin inaccessible.
 
 ```swift
 /**
@@ -211,7 +207,7 @@ account.status { (status: AccountStatus?, error: Error?) in
         // We create that account on the playground blockchain
         ()
     case .created:
-        // The account exists on the blockchain - We can send transactions (provided there are enough kins)
+        // The account exists on the blockchain - We can send transactions (provided there are enough Kin)
         ()
     }
 }
@@ -219,7 +215,7 @@ account.status { (status: AccountStatus?, error: Error?) in
 
 ## Get the balance
 
-The balance gives you the number of kins available on your account.
+The balance gives you the number of Kin available on your account.
 To get the balance, an asynchronous call is performed with `func balance(completion: @escaping BalanceCompletion)`
 
 ```swift
@@ -240,9 +236,9 @@ func getBalance(forAccount account: KinAccount, completionHandler: ((Kin?) -> ()
 ```
 
 
-## Send kins with a transaction
+## Send Kin with a transaction
 
-Provided the account has been created and funded on the playground blockchain environment, you can now use it to send kins
+Provided the account has been created and funded on the playground blockchain environment, you can now use it to send Kin
 to another account. This process happens in two steps:
 - Building the transaction request, which returns a `TransactionEnvelope` object if successful
 - Sending the request, which returns a `TransactionId` if successful
