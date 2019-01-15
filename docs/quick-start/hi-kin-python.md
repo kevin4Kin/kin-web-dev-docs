@@ -135,7 +135,7 @@ print('\nAccount created with transaction id: {}'.format(tx_hash))
 ![](/img/HWPython/4_AccountCreate2.png)
 
 ### Get the details of a transaction
-Every operation on the Kin blockchain is a transaction, so let's print information about the last action performed.
+Let's print information about the last action performed.
 
 ```python
 print('\nUse the client to get info about the transaction just executed\n')
