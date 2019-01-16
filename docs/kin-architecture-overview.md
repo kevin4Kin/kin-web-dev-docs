@@ -30,13 +30,13 @@ The client SDK also provides classes and methods for managing the account, inclu
 - Sending Kin from the user's account to another account on the Kin blockchain.
 - Listening for events on the user's account.
 
-For a quick code introduction to client apps, see the [Hello Client World](quick-start/hi-kin-android) for Android.
+For a quick code introduction to client apps, see [Hello World Android](quick-start/hi-kin-android).
 
 ### Back-end server
 
 When you're in production, all communication with your users are handled by your back-end server. Kin provides the [Kin SDK for Python](documentation/python-sdk.md) for your use.
 
-After a client app begins the process of account creation, they'll send a request to your server to add the account to the Kin blockchain. The Kin SDK for Python includes scripts that allow you to process those requests with high throughput. You will in turn send a request to a Horizon server managed by the Kin Blockchain service. The Kin Blockchain service will process the request and return a result including error codes.
+After a client app begins the process of account creation, they'll send a request to your server to add the account to the Kin blockchain. The Kin SDK for Python includes scripts that allow you to process those requests with high throughput. You will in turn send a request to a Horizon server managed by the Kin Blockchain service. The Kin Blockchain will process the request and return a result including error codes.
 
 The Kin SDK for Python provides such key actions as:
 
@@ -45,11 +45,11 @@ The Kin SDK for Python provides such key actions as:
 - Monitoring multiple accounts
 - Creating your own server account on the Kin blockchain. This account will be used to receive your rewards once the Kin Rewards Engine is live.
 
-For a quick introduction to back-end server coding, apps, see the [Hello Server World](quick-start/hi-kin-python) for Python.
+For a quick introduction to back-end server coding, apps, see [Hello World with the Python SDK](quick-start/hi-kin-python).
 
 ## Kin Blockchain Service
 
-The Kin Foundation (and its partners) is responsible for managing two key components in the Kin architecture.
+The Kin Foundation (and its partners) are responsible for managing two key components in the Kin architecture.
 
 ### Horizon servers
 
@@ -60,8 +60,8 @@ Horizon servers provide REST API access to the Kin Blockchain. There are two Hor
 The Kin Blockchain is a decentralized service optimized for the Kin Ecosystem. Key attributes include:
 
 - **High throughput.** It's our goal to build with you the most used cryptocurrency in the world, and we made sure our blockchain has the capacity to grow.
-- **Kin Rewards Engine (KRE)**. Each participating developer is compensated by the Kin Foundation for their contribution to the growth of the Kin ecosystem. When the rewards engine goes live it will transfer Kin direction from the foundation to your account on the Kin blockchain.
-- **Low transaction cost.** Like most blockchains, Kin blockchain by default charges a very small fee to execute a transaction. This helps prevent spam and denial of service attacks on the blockchain by unknown and untrusted participants. Kin blockchain technology allows users to avoid blockchain fees if you label all of their transactions with an `appID` and get your app approved by Kin to participate in the Whitelist service.
+- **Kin Rewards Engine (KRE)**. Each participating developer is compensated by the Kin Foundation for their contribution to the growth of the Kin ecosystem. When the rewards engine goes live it will transfer Kin directly from the foundation to your account on the Kin blockchain.
+- **Low transaction cost.** Like most blockchains, Kin Blockchain by default charges a very small fee to execute a transaction. This helps prevent spam and denial of service attacks on the blockchain by unknown and untrusted participants. Kin Blockchain technology allows users to avoid blockchain fees if you label all of their transactions with an `appID` and get your app approved by Kin to participate in the Whitelist service.
 
 ## Next steps
 That covers the big picture of the Kin Blockchain architecture. From here we suggest you go to:

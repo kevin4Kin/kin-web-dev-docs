@@ -1,6 +1,6 @@
 ---
 id: python-sdk
-title: Python SDK
+title: Kin SDK for Python
 ---
 
 The Kin SDK for Python is meant to be used as a back-end service for your client apps (iOS, Android, etc.) to connect to it. The SDK will take care of communicating with the Kin Blockchain to activate accounts, execute transactions, etc. It's up to you how to integrate the SDK in your overall architecture and managing server up-time.
