@@ -3,7 +3,7 @@ id: python-sdk
 title: Python SDK
 ---
 
-The Kin SDK for Python is meant to be used as a back-end service for your client apps (iOS, Android, etc.) to connect to it. The SDK will take care of communicating with the Kin Blockchain to activate accounts, execute transactions, etc. It's up to you how to integrate the SDK in your overall architecture and managing server up-time.
+The Kin SDK for Python is meant to be used as a back-end service, it can perform some actions for your client apps (iOS, Android, etc.) and also operate as a server for you to build services on top of the Kin blockchain. The SDK can for example take care of communicating with the Kin Blockchain behalf of the client to create accounts and whiltelist transactions and it can also monitor blockchain transactions so that you can implement broader services. It's up to you how to integrate the SDK in your overall architecture and managing server up-time.
 
 ## Requirements.
 
@@ -450,4 +450,3 @@ channels = utils.get_hd_channels(master_seed, salt, amount)
 
 ## License
 The code is currently released under [MIT license](LICENSE).
-
