@@ -11,13 +11,6 @@ This tutorial operates in the Kin Playground environment where you can develop a
 
 This tutorial is designed to take you from start to finish in 5 minutes or less, so get ready!
 
-## Disclaimer
-This is still a work in progress and subject to change.
-
-TODO:
-- add link explaining what the friendbot is
-- Add link about fees and whitelisting in the "Send Kin" chapter
-
 ## Setup
 First of all you need to install the Kin SDK. The Kin SDK requires Python 3 and is installed with pip:
 
@@ -105,7 +98,7 @@ account = client.kin_account(keypair.secret_seed)
 
 ![](../../img/HWPython/3_AccountCreated.png)
 
-Details of the `friendbot` service are too detailed for our Hello World tutorial, so when you're ready you should read [this].
+Details of the `friendbot` service are too detailed for our Hello World tutorial, so when you're ready you should read [this](../documentation/python-sdk#friendbot).
 
 ### Get balance
 Whether you created a new account or opened an existing one you can now perform the most basic action: check the  account balance. The `account` object provides a few basic methods including `get_balance()`.
@@ -149,7 +142,7 @@ pprint(vars(transaction))
 ### Send Kin
 Now that you have a destination public address you can send Kin to the associated account. `new_keypair` holds the information of the destination account. You are going to send 10 KIN. Executing this transaction will by default incur a cost of 100 FEE. (1 KIN = 10<sup>-5</sup> FEE)
 
-Not all transactions executed on the blockchain will be charged Fee. To learn more about transaction fees and whitelisting, see [Whitelist].
+Not all transactions executed on the blockchain will be charged Fee. To learn more about transaction fees and whitelisting, see [Whitelist](../documentation/python-sdk#transferring-kin-to-another-account-using-whitelist-service).
 
 ```python
 tx_hash = account.send_kin(new_keypair.public_address, amount=10, fee=100, memo_text='Hello World')
