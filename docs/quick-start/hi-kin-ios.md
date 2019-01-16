@@ -55,19 +55,21 @@ In your view controller, add this function.
 Initializes the Kin Client with the playground environment.
 */
 func initializeKinClientOnPlaygroundNetwork() -> KinClient? {
-    let url = "http://horizon-playground.kininfrastructure.com"
+    let url = "http://horizon-testnet.kininfrastructure.com"
     guard let providerUrl = URL(string: url) else { return nil }
+
     do {
         let appId = try AppId("test")
         return KinClient(with: providerUrl, network: .playground, appId: appId)
-    } catch let error {
+    }
+    catch let error {
         print("Error \(error)")
     }
     return nil
 }
 ```
 
-And for instance in your viewDidLoad, call to initialize the client:
+And call to initialize the client:
 
 `let kinClient: KinClient! = initializeKinClientOnPlaygroundNetwork()`
 
@@ -84,17 +86,18 @@ Let’s quickly configure the `Info.plist` file to allow HTTP requests:
 
 ## Get or create the stored account
 
-A Kin Client can manage multiple accounts. In this tutorial, we will only be using one.
+A Kin Client can manage multiple accounts. We will only be using one here.
 
-If an account is available from the local store, you can get it with
+If an account is available from the local store, you can get it with:
 `let account = kinClient.accounts.first`
 
-If no account is available, you create one
+If no account is available, you need to create one
 ```swift
 do {
     let account = try kinClient.addAccount()
     return account
-} catch let error {
+}
+catch let error {
     print("Error creating an account \(error)")
 }
 ```
@@ -108,11 +111,9 @@ A Kin account is identified via its public address, retrieved with `.publicAddre
 account.publicAddress
 ```
 
-
-
 ## Delete a stored account
 
-If you want to make sure there are no account stored locally, delete the first account.
+If you want to make sure there are no account stored locally, delete the accounts from the `KinClient`.
 
 :warning: If the account has not been backed up previously by exporting it, it will be lost and its kins inaccessible.
 
@@ -124,7 +125,8 @@ func deleteFirstAccount(kinClient: KinClient) {
     do {
         try kinClient.deleteAccount(at: 0)
         print("First stored account deleted!")
-    } catch let error {
+    }
+    catch let error {
         print("Could not delete account \(error)")
     }
 }
@@ -137,13 +139,16 @@ the blockchain in order to query its status, balance or exchange transactions.
 
 ```swift
 /**
-Create the given stored account on the playground blockchain.
+Create the given stored account on the playground blockchain. When on the Playground blockchain, the account
+is funded with 10000 Kins automatically.
 */
-func createPlaygroundAccountOnBlockchain(account: KinAccount, completionHandler: @escaping (([String: Any]?) -> ())) {
+func createAccountOnPlaygroundBlockchain(account: KinAccount,
+                                         completionHandler: @escaping (([String: Any]?) -> ())) {
     // Playground blockchain URL for account creation
-    let createUrlString = "http://friendbot-playground.kininfrastructure.com?addr=\(account.publicAddress)"
+    let createUrlString = "http://friendbot-testnet.kininfrastructure.com?addr=\(account.publicAddress)"
 
     guard let createUrl = URL(string: createUrlString) else { return }
+
     let request = URLRequest(url: createUrl)
     let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
         if let error = error {
@@ -158,13 +163,19 @@ func createPlaygroundAccountOnBlockchain(account: KinAccount, completionHandler:
             completionHandler(nil)
             return
         }
+        // check if there's a bad status
+        guard result["status"] == nil else {
+            print("Error status \(result)")
+            completionHandler(nil)
+            return
+        }
         print("Account creation on playground blockchain was successful with response data: \(result)")
         completionHandler(result)
     }
 
     task.resume()
 }
-```
+ ```
 
 ## Putting it together
 
@@ -240,14 +251,22 @@ func getBalance(forAccount account: KinAccount, completionHandler: ((Kin?) -> ()
 ```
 
 
-## Send kins with a transaction
+## Send Kins with a transaction
 
-Provided the account has been created and funded on the playground blockchain environment, you can now use it to send kins
+Provided the account has been created and funded on the playground blockchain environment, you can now use it to send Kins
 to another account. This process happens in two steps:
-- Building the transaction request, which returns a `TransactionEnvelope` object if successful
-- Sending the request, which returns a `TransactionId` if successful
+- Build the transaction request, which returns a `TransactionEnvelope` object if successful
+- Send the request, which returns a `TransactionId` if successful
 
 The following snippet generate the transaction request, then send it.
+
+Every transaction costs a fee to execute on the blockchain network.
+Fee for individual transactions are trivial (1 Fee = 10<sup>-5</sup> Kin).
+
+A whitelist of pre-approved Kin apps have their fee waived. In this case, a special 'whitelist' transactions
+is sent. See [Send kins with a whitelist transaction]()
+
+
 ```swift
 /**
 Sends a transaction to the given account.
@@ -256,20 +275,24 @@ func sendTransaction(fromAccount account: KinAccount,
                      toAddress address: String,
                      kinAmount kin: Kin,
                      memo: String?,
+                     fee: Stroop,
                      completionHandler: ((String?) -> ())?) {
     // Get a transaction envelope object
-    account.generateTransaction(to: address, kin: kin, memo: memo) { (envelope, error) in
+    account.generateTransaction(to: address, kin: kin, memo: memo, fee: fee) { (envelope, error) in
         if error != nil || envelope == nil {
             print("Could not generate the transaction")
             if let error = error { print("with error: \(error)")}
             completionHandler?(nil)
             return
         }
+
         // Sends the transaction
-        account.sendTransaction(envelope!){ (txId, error) in
+        account.sendTransaction(envelope!) { (txId, error) in
             if error != nil || txId == nil {
                 print("Error send transaction")
-                if let error = error { print("with error: \(error)") }
+                if let error = error {
+                    print("with error: \(error)")
+                }
                 completionHandler?(nil)
                 return
             }
@@ -282,6 +305,99 @@ func sendTransaction(fromAccount account: KinAccount,
 
 Besides the Kin account destination address and the amount of kin to be transferred, a `memo` parameter can also be
 attached to the transaction, for instance to specify an order number.
+
+## Send Kins with a whitelist transaction
+
+A whitelist of pre-approved Kin apps have their fee waived. When sending
+transactions for an app that is whitelisted, an additional step is
+necessary to sign the transaction envelope with a whitelist service.
+
+The steps are thus the following:
+
+- Build the transaction request, which returns a `TransactionEnvelope` object if successful
+- Create a whitelist envelope passing the generated envelope and the network Id of the client
+- Sign the whitelist envelope by sending it to a specific whitelist service. Another `TransactionEnvelope` object is returned if the call is successful
+- Send the request, which returns a `TransactionId` if successful
+
+```
+/**
+Sends a transaction to the given account.
+*/
+func sendWhitelistTransaction(fromAccount account: KinAccount,
+                              toAddress address: String,
+                              kinAmount kin: Kin,
+                              memo: String?,
+                              fee: Stroop,
+                              completionHandler: ((String?) -> ())?) {
+    // Get a transaction envelope object
+    account.generateTransaction(to: address, kin: kin, memo: memo, fee: fee) { (envelope, error) in
+        if error != nil || envelope == nil {
+            print("Could not generate the transaction")
+            if let error = error {
+                print("with error: \(error)")
+            }
+            completionHandler?(nil)
+            return
+        }
+
+        let networkId = Network.testNet.id
+        let whitelistEnvelope = WhitelistEnvelope(transactionEnvelope: envelope!, networkId: networkId)
+
+        self.signWhitelistTransaction(whitelistServiceUrl: "WHITELIST_SERVICE_URL",
+                envelope: whitelistEnvelope) { (signedEnvelope, error) in
+            if error != nil || signedEnvelope == nil {
+                print("Error whitelisting the envelope")
+                if let error = error {
+                    print("with error: \(error)")
+                }
+                completionHandler?(nil)
+                return
+            }
+            // send the whitelist transaction
+            account.sendTransaction(signedEnvelope!) { (txId, error) in
+                if error != nil || txId == nil {
+                    print("Error send whitelist transaction")
+                    if let error = error {
+                        print("with error: \(error)")
+                    }
+                    completionHandler?(nil)
+                    return
+                }
+                print("Whitelist transaction was sent successfully for \(kin) Kins - id: \(txId!)")
+                completionHandler?(txId!)
+            }
+
+        }
+    }
+}
+```
+
+```
+/**
+Sign the given transaction envelope so that the transaction can be submitted with the fee waived
+*/
+func signWhitelistTransaction(whitelistServiceUrl: String,
+                              envelope: WhitelistEnvelope,
+                              completionHandler: @escaping ((TransactionEnvelope?, Error?) -> ())) {
+    let whitelistingUrl = URL(string: whitelistServiceUrl)!
+
+    var request = URLRequest(url: whitelistingUrl)
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpMethod = "POST"
+    request.httpBody = try? JSONEncoder().encode(envelope)
+
+    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        do {
+            let envelope = try TransactionEnvelope.decodeResponse(data: data, error: error)
+            completionHandler(envelope, nil)
+        }
+        catch {
+            completionHandler(nil, error)
+        }
+    }
+    task.resume()
+}
+```
 
 ## Export an account
 
@@ -310,7 +426,7 @@ The resulting JSON looks like this:
 This tutorial should have helped you get started with the Kin SDK for iOS. Other topics not covered here are:
 
 - Transition to the main production environment, e.g. get an `appId` for your app
-- Whitelisted transactions
+
 
 
 

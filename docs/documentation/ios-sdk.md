@@ -20,6 +20,7 @@ pod 'KinSDK', '~> 0.8.0’
 See the latest releases at [github.com/kinecosystem/kin-sdk-ios/releases](https://github.com/kinecosystem/kin-sdk-ios/releases)
 
 The main repository is at [github.com/kinecosystem/kin-sdk-ios](https://github.com/kinecosystem/kin-sdk-ios)
+
 ### Sub-project
 
 1. Clone this repo (as a submodule or in a different directory, it's up to you).
@@ -56,13 +57,15 @@ KinClient(with: URL, network: Network, appId: AppId)
 - `network` You declare which Kin blockchain network you want to work with using the pre-defined enum value `Network.mainNet` or `Network.playground`.
 - `appId` must be a 4-character string which identifies your application. It must contain only digits and upper and/or lower case letters.
 
-For instance, to initialize a Kin Client to use the test network.
+For instance, to initialize a Kin Client to use the Playground network.
 ```swift
-let url = "http://horizon-playground.kininfrastructure.com"
-guard let providerUrl = URL(string: url) else { return nil }
+let url = "http://horizon-testnet.kininfrastructure.com"
+guard let providerUrl = URL(string: url) else {
+    return nil
+}
 do {
     let appId = try AppId("test")
-    let kinClient = KinClient(with: providerUrl, network: .playground, appId: appId)
+    let kinClient = KinClient(with: providerUrl, network: .testNet, appId: appId)
 } catch let error {
     print("Error \(error)")
 }
@@ -114,7 +117,8 @@ To create an account:
 ```swift
 do {
     let account = try kinClient.addAccount()
-} catch let error {
+}
+catch let error {
     print("Error creating an account \(error)")
 }
 ```
@@ -129,7 +133,8 @@ Deleting the first account
 ```swift
 do {
     try kinClient.deleteAccount(at: 0)
-} catch let error {
+}
+catch let error {
     print("Could not delete account \(error)")
 }
 ```
@@ -143,7 +148,8 @@ let json = "{\"pkey\":\"GBKN6ATMTFQOKDIJOUUP6G7A7GFAQ6XHJBV3HJ5QAQH3NCUQNXISH3AR
         "\"seed\":\"61381366f4af2c57c55e2c23411e26d5a85eae18a9e1c91e01fa7e9967f3d2b9e0f8a412c9147d7abe1529adcaef21a84ebc266da0a86b0f6a9adf2b3007652811ceaa4156834620\",\"salt\":\"a663ec77c54bb2c9efdffabb5685cda9\"}"
 do {
     try kinClient.importAccount(json, passphrase: "a-secret-passphrase-here")
-} catch let error {
+}
+catch let error {
     print("Error importing the account \(error)")
 }
 ```
@@ -160,9 +166,11 @@ Create the given stored account on the playground blockchain.
 */
 func createPlaygroundAccountOnBlockchain(account: KinAccount, completionHandler: @escaping (([String: Any]?) -> ())) {
     // Playground blockchain URL for account creation
-    let createUrlString = "http://friendbot-playground.kininfrastructure.com?addr=\(account.publicAddress)"
+    let createUrlString = "http://friendbot-testnet.kininfrastructure.com?addr=\(account.publicAddress)"
 
-    guard let createUrl = URL(string: createUrlString) else { return }
+    guard let createUrl = URL(string: createUrlString) else {
+        return
+    }
     let request = URLRequest(url: createUrl)
     let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
         if let error = error {
@@ -230,7 +238,7 @@ Fee for individual transactions are trivial (1 Fee = 10<sup>-5</sup> Kin).
 Some apps can be added to the Kin whitelist, a set of pre-approved apps whose users will not be charged Fee to execute transactions.
 If your app is whitelisted then refer to [TODO]()
 
-#### Transactions (not whitelisted)
+#### Send Kins with a transaction (not whitelisted)
 
 Transactions are executed on the Kin blockchain in a two-step process:
 
@@ -245,12 +253,14 @@ Build the transaction with:
 func generateTransaction(to recipient: String,
                              kin: Kin,
                              memo: String?,
+                             fee: Stroop,
                              completion: @escaping GenerateTransactionCompletion)
 ```
 
 - `recipient` is the recipient's public address.
 - `kin` is the amount of Kin to be sent.
 - `memo` is an optional string, up-to 28 bytes in length, included on the transaction record. A typical usage is to include an order number..
+- `fee` The fee in `Stroop`s used if the transaction is not whitelisted.
 - `completion` callback method called with the `TransactionEnvelope` and `Error`.
 
 ##### Send the transaction
@@ -263,9 +273,14 @@ func sendTransaction(_ transactionEnvelope: TransactionEnvelope,
 - `transactionEnvelope`: The `TransactionEnvelope` object to send.
 - `completion`: A completion callback method with the `TransactionId` or `Error`.
 
-#### Whitelisted transactions
+#### Send Kins with a whitelist transaction (Fee waived)
 
-TODO
+Transactions are executed on the Kin blockchain in a two-step process:
+
+- **Build** the transaction which includes the calculation of the transaction hash. The transaction hash is used as an ID and is necessary to query the status of the transaction.
+- Create a `WhitelistEnvelope`
+- **Send** the `WhitelistEnvelope` to a whitelist service which will sign and return an new `TransactionEnvelope`.
+- **Send** the transaction for its execution on the blockchain.
 
 Pass the returned `TransactionEnvelope` to the `WhitelistEnvelope`.
 
@@ -276,7 +291,8 @@ init(transactionEnvelope: TransactionEnvelope, networkId: Network.Id)
 The `WhitelistEnvelope` should be passed to a server for signing. The server response should be a  `TransactionEnvelope` with a second signature, which can then be sent.
 
 ```swift
-func sendTransaction(_ transactionEnvelope: TransactionEnvelope) -> Promise<TransactionId>
+func sendTransaction(_ transactionEnvelope: TransactionEnvelope,
+                       completion: @escaping SendTransactionCompletion)
 ```
 
 ## Miscellaneous
