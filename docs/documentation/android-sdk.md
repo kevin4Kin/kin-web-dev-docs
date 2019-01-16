@@ -6,21 +6,6 @@ With the Kin SDK for Android you can give your users fun ways to earn and spend 
 
 Kin SDK for Android is implemented as an Android library that can be incorporated into your code. If you’re just getting started with Kin ecosystem we suggest you spend a few minutes reading this [overview of the Kin architecture.](documentation/kin-architecture-overview.md)
 
-This SDK overview is organized into a few key sections:
-
-* [Installation](#installation)
-* [Overview](#overview)
-	* [Accessing Kin blockchain](#accessing-a-kin-blockchain)
-	* [Managing accounts](#managing-accounts)
-	* [Transactions](#transactions)
-* [Details](#details)
-	* [Sync vs Async](#sync-vs-async)
-	* [Account Listeners](#account-listeners)
-	* [Error Handling](#error-handling)
-	* [Testing](#testing)
-	* [Building from Source](#building-from-source)
-* [Sample Code](#sample-code)
-
 ## Installation
 
 Kin SDK for Android is implemented as an Android library. To include the library in your project add these two statements to your `build.gradle` files.
