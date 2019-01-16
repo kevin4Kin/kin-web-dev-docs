@@ -22,6 +22,8 @@ This tutorial covers the primary elements of the script. See the Download link a
 
 The script simply executes a set of predefined commands. No user interaction is required except for the creation of a public address.
 
+Please note that we will be using `pprint` and `vars` to print to screen, this is not the most elegant way to do it and we'll make changes to our SDK soon (and then we'll update this tutorial).
+
 ### The basics
 With the Kin SDK for Python installed you can create the simple `main.py` script. Let's import `kin`.
 

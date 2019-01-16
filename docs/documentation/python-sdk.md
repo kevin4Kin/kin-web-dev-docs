@@ -26,7 +26,7 @@ You will find:
 * Accessing the Kin blockchain
 * Managing Kin accounts
 * Executing transactions against Kin accounts
-* Monitoring Kin Payments (unique to Python)
+* Monitoring Kin Payments (Python SDK can monitor all accounts)
 * Channels (unique to the Python SDK)
 
 
@@ -391,7 +391,7 @@ monitor = client.monitor_account_payments('address', callback_fn)
 ```
 
 ### Monitor multiple accounts
-Monitoring multiple accounts will continuously get data about **all** the selected accounts on the blockchain, and will filter it.
+It is possible to monitor multiple accounts using `monitor_accounts_payments`, the function will continuously get data about **all** accounts on the blockchain, and will filter for the selected accounts.
 
 ```python
 def callback_fn(address, tx_data, monitor)
