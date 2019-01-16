@@ -451,6 +451,3 @@ channels = utils.get_hd_channels(master_seed, salt, amount)
 ## License
 The code is currently released under [MIT license](LICENSE).
 
-
-## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md) for SDK contributing guidelines.
