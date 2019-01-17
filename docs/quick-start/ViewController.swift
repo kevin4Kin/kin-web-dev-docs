@@ -98,7 +98,7 @@ class ViewController: UIViewController {
                                 print("Error sending transaction")
                                 return
                             }
-                            print("Kins were sent successfully!!!!!")
+                            print("Kin were sent successfully!!!!!")
 
                             // Get the balance after the transaction
                             self.getBalance(forAccount: account) { kin in
@@ -113,16 +113,16 @@ class ViewController: UIViewController {
                 }
 
             case .created:
-                // The account exists on the blockchain - We can send transactions (provided there are enough kins)
+                // The account exists on the blockchain - We can send transactions (provided there are enough Kin)
 
                 // Get the balance
                 self.getBalance(forAccount: account) { kin in
                     guard let kin = kin,
                           kin > 0.0 else {
-                        print("No kins in this account")
+                        print("No Kin in this account")
                         return
                     }
-                    print("The account is created and can send kins with a balance of \(kin) Kins")
+                    print("The account is created and can send Kin with a balance of \(kin) Kin")
                     let toAddress = "GBGOKDBB3PABAGJV233C3LVBIO5HFQUUSML4FTXYCHW2VCEU4QLYL2II"
                     self.sendWhitelistTransaction(fromAccount: account,
                             toAddress: toAddress,

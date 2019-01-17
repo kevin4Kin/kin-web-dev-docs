@@ -66,7 +66,8 @@ guard let providerUrl = URL(string: url) else {
 do {
     let appId = try AppId("test")
     let kinClient = KinClient(with: providerUrl, network: .testNet, appId: appId)
-} catch let error {
+} 
+catch let error {
     print("Error \(error)")
 }
 ```
@@ -238,7 +239,7 @@ Fee for individual transactions are trivial (1 Fee = 10<sup>-5</sup> Kin).
 Some apps can be added to the Kin whitelist, a set of pre-approved apps whose users will not be charged Fee to execute transactions.
 If your app is whitelisted then refer to [TODO]()
 
-#### Send Kins with a transaction (not whitelisted)
+#### Send Kin with a transaction (not whitelisted)
 
 Transactions are executed on the Kin blockchain in a two-step process:
 
@@ -273,7 +274,7 @@ func sendTransaction(_ transactionEnvelope: TransactionEnvelope,
 - `transactionEnvelope`: The `TransactionEnvelope` object to send.
 - `completion`: A completion callback method with the `TransactionId` or `Error`.
 
-#### Send Kins with a whitelist transaction (Fee waived)
+#### Send Kin with a whitelist transaction (Fee waived)
 
 Transactions are executed on the Kin blockchain in a two-step process:
 
