@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         var account: KinAccount! = nil
 
         // This deletes any stored account so that we recreate one
-//        deleteFirstAccount(kinClient: kinClient)
+        deleteFirstAccount(kinClient: kinClient)
 
         // Get any stored existing user account
         if let existingAccount = getFirstAccount(kinClient: kinClient) {
@@ -128,12 +128,12 @@ class ViewController: UIViewController {
                             toAddress: toAddress,
                             kinAmount: 4,
                             memo: "Test",
-                            fee: 1) { txId in
+                            fee: 0) { txId in
                         guard let _ = txId else {
                             print("Error sending whitelist transaction")
                             return
                         }
-                        print("Kins were sent successfully using a whitelist transaction !!!!!")
+                        print("Kin were sent successfully using a whitelist transaction !!!!!")
 
                         self.getBalance(forAccount: account) { kin in
                             guard let kin = kin else {
@@ -264,7 +264,7 @@ class ViewController: UIViewController {
 
     /**
     Create the given stored account on the playground blockchain. When on the Playground blockchain, the account
-    is funded with 10000 Kins automatically.
+    is funded with 10000 Kin automatically.
     */
     func createAccountOnPlaygroundBlockchain(account: KinAccount,
                                              completionHandler: @escaping (([String: Any]?) -> ())) {
@@ -328,7 +328,7 @@ class ViewController: UIViewController {
                     completionHandler?(nil)
                     return
                 }
-                print("Transaction was sent successfully for \(kin) Kins - id: \(txId!)")
+                print("Transaction was sent successfully for \(kin) Kin - id: \(txId!)")
                 completionHandler?(txId!)
             }
         }
@@ -377,7 +377,7 @@ class ViewController: UIViewController {
                         completionHandler?(nil)
                         return
                     }
-                    print("Whitelist transaction was sent successfully for \(kin) Kins - id: \(txId!)")
+                    print("Whitelist transaction was sent successfully for \(kin) Kin - id: \(txId!)")
                     completionHandler?(txId!)
                 }
 
@@ -411,4 +411,3 @@ class ViewController: UIViewController {
     }
 
 }
-
