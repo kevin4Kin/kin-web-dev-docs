@@ -32,7 +32,7 @@ One of the first statements executed when the app is created connects to the tes
 ```
 `Environment.TEST` is a public static variable that includes `networkURL`, `networkPassphrase`, and `issuerAccountID`. `networkURL` is the location of a [Horizon server](../kin-architecture-overview.md/#horizon-servers) providing access to the test blockchain.
 
-`STUB_APP_ID` is a four-character string added to all transactions posted to the blockchain. It identifies the service to which that transaction should be credited. Those credits will produce rewards for your organization when the Kin Rewards Engine is live.
+`STUB_APP_ID` should be replaced with your `appID` and it's a four-character string added to all transactions posted to the blockchain. It identifies the service to which that transaction should be credited. Those credits will produce rewards for your organization when the Kin Rewards Engine is live. In the Playground you can use any four-character string. The `appID` is automatically added to the `memo` field (more on this later).
 
 ## KinClient
 The `KinClient` class contains methods for managing accounts on the Kin Blockchain. To explore those methods, place your cursor on `KinClient` and press `ctl-q` on Windows or `ctl-J` on Mac to produce:
@@ -148,13 +148,15 @@ Notice how the `transferKin` function builds the transaction request locally, re
 
 Knowing the transaction ID in advance of sending the request is important for exception handling. For example, it is possible to experience a network outage after a request is successfully sent but before any callback is received. When network access is restored you can query the blockchain for the status of the transaction in question to determine next steps.
 
+In this function we use two method of the Kin SDK:
+- `buildTransaction` builds the transaction locally and expects 4 parameters, the recipient's public address, the amount of Kin to transfer, the fee and a memo
+- `sendTransaction` only expects the `transaction` object returned by buildTransaction.
+
+The memo field allows developers to add a note to any transaction and accepts up to 21 characters. The `appID` is automatically added to all transactions in the memo field as well.
+
 ```java
    public void transferKin(KinAccount sender, String targetPublicAddress, BigDecimal amountInKin) {
 
-        // Build the transaction request and run the request asynchronously:
-        // The sender is a kin account that transfers Kin to the target public address
-        // Each transaction will be charged a fee
-        // Memo will state the transaction's reason
         sender.buildTransaction(targetPublicAddress, amountInKin, FEE, MEMO).run(new ResultCallback<Transaction>() {
 
             @Override
