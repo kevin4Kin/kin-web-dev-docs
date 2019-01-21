@@ -175,10 +175,10 @@ Lastly, check the updated balance.
 print('After the transaction the new balance is {}'.format(client.get_account_balance(new_keypair.public_address)))
 ```
 
-# Conclusions
+## Conclusions
 This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the between your client apps and the Kin blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
 
-# Downloads
+## Downloads
 
 Download the full [main.py](main.py) for your convenience.
 
