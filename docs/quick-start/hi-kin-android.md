@@ -12,17 +12,25 @@ From Android Studio, select `File > New > Project from Version Control > Git` an
 
 **https://github.com/kinecosystem/kin-sdk-android**
 
-In the project window, navigate to `kin-sdk-android > samples > hello-world > src > main > java > com.sample.hello_world > MainActivity ` Open the file to see the Hello World Java code.
+Because Hello World for Android is a work in progress tracking the migration to the Kin Blockchain, we have not yet incorporated it into the master branch of the Kin SDK for Android repository.
 
-## Connect to Kin blockchain
+To open the development branch where you'll find the Hello World app, in Android Studio select `VCS > Git > Branches`. Under `Remote Branches` select the one that mentions 'create Hello World app' then `check out as local branch`.
 
-One of the first statements executed when the app is created connects to the test environment of the Kin blockchain.
+From the project window navigate to `kin-sdk > samples > hello-world > src > main > java > com.example.hello_world` and open file `MainActivity.java`.
+
+With that out of the way, we can start looking at the code.
+
+**Note:** As of this writing we have tested the Hello World for Android app using Android Studio 3.2 and emulators running Android API level 26.
+
+## Connect to Kin Blockchain
+
+One of the first statements executed when the app is created connects to the test environment of the Kin Blockchain.
 
 ```java
         // Kin client is the manager for Kin accounts
         kinClient = new KinClient(this, Environment.TEST, STUB_APP_ID);
 ```
-`Environment.TEST` is a public static variable that includes `networkURL`, `networkPassphrase`, and `issuerAccountID`. `networkURL` is the location of a Horizon server providing access to the test blockchain.
+`Environment.TEST` is a public static variable that includes `networkURL`, `networkPassphrase`, and `issuerAccountID`. `networkURL` is the location of a [Horizon server](../kin-architecture-overview.md/#horizon-servers) providing access to the test blockchain.
 
 `STUB_APP_ID` is a four-character string added to all transactions posted to the blockchain. It identifies the service to which that transaction should be credited. Those credits will produce rewards for your organization when the Kin Rewards Engine is live.
 
@@ -74,7 +82,7 @@ Kin SDK for Android provides a set of listeners that allow you to receive callba
         addBalanceListeners(kinAccount);
 ```
 
-When the above snippet calls the below function you will see a log entry reporting the balance of the account on the Kin blockchain.
+When the above snippet calls the below function you will see a log entry reporting the balance of the account on the Kin Blockchain.
 
 ```java
     public void addBalanceListeners(KinAccount account) {
@@ -90,7 +98,7 @@ Onboarding is the process of sending an async request to the Horizon server requ
 First, it sends the onboarding request and logs the success upon callback.  
 
 ```java
-        // Add the account to the Kin blockchain
+        // Add the account to the Kin Blockchain
         onBoardAccount(kinAccount, new Callbacks() {
                 Log.d(TAG, "Onboarding succeeded");
 ...
@@ -107,7 +115,7 @@ First, it sends the onboarding request and logs the success upon callback.
 After onboarding succeeds, the code transfers 5 KIN to another account. The public address of an account is the public key created when a local keypair is generated.
 
 ```java
-        // Add the account to the Kin blockchain
+        // Add the account to the Kin Blockchain
         // As it is an async request, at the callback we will be able to transfer Kin and check the account balance
         onBoardAccount(kinAccount, new Callbacks() {
                 Log.d(TAG, "Onboarding succeeded");
@@ -134,7 +142,7 @@ Not all blockchain transactions are charged Fee. Some apps (identified by `appID
 
 ## Transaction ID
 
-Every transaction added to the Kin blockchain includes a unique identification that is the hash of the transaction payload.
+Every transaction added to the Kin Blockchain includes a unique identification that is the hash of the transaction payload.
 
 Notice how the `transferKin` function builds the transaction request locally, records the transaction ID, then sends the transaction to the Horizon server for execution.
 
