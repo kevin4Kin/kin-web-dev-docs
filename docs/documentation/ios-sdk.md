@@ -2,7 +2,6 @@
 id: ios-sdk
 title: Kin SDK for iOS
 ---
-#  Kin SDK for iOS
 
 With the Kin SDK for iOS you can give your users fun ways to earn and spend Kin in your app, and help us build a whole new digital world.
 
@@ -27,7 +26,7 @@ The main repository is at [github.com/kinecosystem/kin-sdk-ios](https://github.c
 ```
 git clone --recursive https://github.com/kinecosystem/kin-sdk-ios
 ```
-2. Drag `KinSDK.xcodeproj` into your xcode projects as a subproject.
+2. Drag `KinSDK.xcodeproj` into your xcode project as a subproject.
 3. In your main `.xcodeproj` file, select the desired target(s).
 4. Go to **Build Phases**, expand Target Dependencies, and add `KinSDK`.
 5. In Swift, `import KinSDK` and you are good to go! (We haven't yet tested Objective-C.)
@@ -45,7 +44,7 @@ The two main classes of the Kin SDK for iOS are `KinClient` and `KinAccount`.
 
 ### KinClient
 
-iOS apps that allow users to earn, spend, and manage Kin are considered clients in the Kin architecture. The following statement creates a `KinClient` object which includes methods to manage accounts on a Kin Blockchain.
+iOS apps that allow users to earn, spend, and manage Kin are considered clients in the Kin architecture. The following statement creates a `KinClient` object which includes methods to manage accounts on the Kin Blockchain.
 
 A `KinClient` object is initialized for a specific Kin environment and network and it manages `KinAccount` objects for that environment.
 
@@ -130,7 +129,7 @@ Deleting an account means removing the account data stored locally.
 
 **Note:** If the account has not been backed up previously by exporting it, it will be lost and its Kin inaccessible.
 
-Deleting the first account
+Deleting the first account:
 ```swift
 do {
     try kinClient.deleteAccount(at: 0)
@@ -204,7 +203,7 @@ func createPlaygroundAccountOnBlockchain(account: KinAccount, completionHandler:
 
 ### Kin account identification
 
-A Kin account is identified via the public address half of its keypair. Retrieve this string with `publicAddress`.
+A Kin account is identified via the public-address half of its keypair. Retrieve this string with `publicAddress`.
 
 ```swift
 var publicAddress: String
@@ -234,10 +233,10 @@ func balance(completion: @escaping BalanceCompletion)
 
 To transfer Kin to another account, you need the public address of the account to which you want to transfer Kin.
 
-By default, your user will need to spend **Fee** to transfer Kin or process any other blockchain transaction.
-Fee for individual transactions are trivial (1 KIN = 10E5 Fee).
-Some apps can be added to the Kin whitelist, a set of pre-approved apps whose users will not be charged Fee to execute transactions.
-If your app is whitelisted then refer to [TODO]()
+Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks.  Fee for individual transactions are trivial (1 KIN = 10E5 Fee). 
+
+A whitelist of pre-approved Kin apps have their fee waived. See [Send Whitelisted Transaction](#send-kin-with-a-whitelist-transaction-fee-waived) for an example. 
+
 
 #### Send Kin with a transaction (not Whitelisted)
 
