@@ -65,7 +65,7 @@ guard let providerUrl = URL(string: url) else {
 do {
     let appId = try AppId("test")
     let kinClient = KinClient(with: providerUrl, network: .testNet, appId: appId)
-} 
+}
 catch let error {
     print("Error \(error)")
 }
@@ -141,7 +141,7 @@ catch let error {
 
 #### Importing an account
 
-The following snippet adds to the list of accounts managed by `KinClient`.
+The following snippet adds to the list of accounts managed by `KinClient`. The passphrase `a-secret-passphrase-here` must be identical to the one used when exporting the account(s).
 
 ```swift
 let json = "{\"pkey\":\"GBKN6ATMTFQOKDIJOUUP6G7A7GFAQ6XHJBV3HJ5QAQH3NCUQNXISH3AR\"," +
@@ -158,7 +158,7 @@ catch let error {
 
 ### Creating an account on the Kin Blockchain
 
-When you create an account using `kinClient.addAccount`, you have created and securely stored a keypair locally but have not yet created an account on the Kin Blockchain. 
+When you create an account using `kinClient.addAccount`, you have created and securely stored a keypair locally but have not yet created an account on the Kin Blockchain.
 
 The following snippet creates the account on the Playground blockchain.
 
@@ -218,6 +218,7 @@ The current account status on the blockchain is queried with `status`.
 ```swift
 func status(completion: @escaping (AccountStatus?, Error?) -> Void)
 ```
+An account’s status is either `.created` or `.notCreated`. If an account only exists locally after a call to `kinClient.addAccount()`, its status will still be `.notCreated`.
 
 ### Kin balance
 
@@ -233,9 +234,9 @@ func balance(completion: @escaping BalanceCompletion)
 
 To transfer Kin to another account, you need the public address of the account to which you want to transfer Kin.
 
-Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks.  Fee for individual transactions are trivial (1 KIN = 10E5 Fee). 
+Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks.  Fee for individual transactions are trivial (1 KIN = 10E5 Fee).
 
-A whitelist of pre-approved Kin apps have their fee waived. See [Send Whitelisted Transaction](#send-kin-with-a-whitelist-transaction-fee-waived) for an example. 
+A whitelist of pre-approved Kin apps have their fee waived. See [Send Whitelisted Transaction](#send-kin-with-a-whitelist-transaction-fee-waived) for an example.
 
 
 #### Send Kin with a transaction (not Whitelisted)
@@ -272,6 +273,7 @@ func sendTransaction(_ transactionEnvelope: TransactionEnvelope,
 - `completion`: A completion callback method with the `TransactionId` or `Error`.
 
 #### Send Kin with a Whitelist transaction (Fee waived)
+The following paragraphs describe the process of whitelisting a transaction. If you want to skip the explanation and jump straight to a code example, see [Send Kin with a whitelist transaction](../quick-start/hi-kin-ios#send-kin-with-a-whitelist-transaction) code included in the [Hello World for iOS](../quick-start/hi-kin-ios) tutorial.
 
 Transactions are executed on the Kin Blockchain in a two-step process:
 
@@ -348,7 +350,7 @@ func watchPayments(cursor: String?) throws -> PaymentWatch
 
 Kin SDK for iOS wraps errors in extensions of methods of `KinAccount`, e.g. `StellarError.missingAccount`.
 
-The underlying error is the actual cause of failure. 
+The underlying error is the actual cause of failure.
 
 ### Common errors
 
