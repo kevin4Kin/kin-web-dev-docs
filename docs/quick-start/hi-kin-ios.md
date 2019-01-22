@@ -13,7 +13,7 @@ Let’s start by installing the [Kin SDK for iOS](https://github.com/kinecosyste
 
 Create a new project in Xcode and select a **Single View App**. This will create an empty project with a basic `ViewController.swift` file. This is where most of the work will be done.
 
-Add `pod 'KinSDK', '~> 0.8.0’` to your `Podfile` then run `pod install`. We use Cocoapods for convenience, if you are not familiar visit [Cocoapods.org](https://cocoapods.org/) and make sure you execute `pod init`.
+Add `pod 'KinSDK', '~> 0.8.1’` to your `Podfile` then run `pod install`. We use Cocoapods for convenience, if you are not familiar visit [Cocoapods.org](https://cocoapods.org/) and make sure you execute `pod init`.
 
 Make sure you have the latest release of the Kin SDK for iOS by checking the release page [github.com/kinecosystem/kin-sdk-ios/releases](https://github.com/kinecosystem/kin-sdk-ios/releases).
 
@@ -113,6 +113,7 @@ func createLocalAccount(kinClient: KinClient) -> KinAccount? {
 
 Once the account has been added, it will be stored locally and can be retrieved the next time the app runs.
 
+You can read more about `.accounts` as part of [Accessing accounts]( http://localhost:3000/docs/documentation/ios-sdk#accessing-accounts).
 ### Account identification
 
 Every account on the Kin Blockchain has an associated key pair: public address and private key. Public address is often called public key. The private key is often also called private seed.
