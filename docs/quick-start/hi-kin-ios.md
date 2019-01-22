@@ -63,7 +63,7 @@ func initializeKinClientOnPlaygroundNetwork() -> KinClient? {
 
 Instantiating `KinClient` requires three parameters: the URL to the [Horizon servers](../kin-architecture-overview.md/#horizon-servers), the desired blockchain environment, and the `appId`. `appId` is a 4 -character string, provided by Kin and associated uniquely with each app. In the test environment you can use any valid `appId`.
 
-For this example, add to your `viewDidLoad()` function a call to initialize the Kin client. This is not a preferred method for a production app, but good enough for this exploration. 
+For this example, add to your `viewDidLoad()` function a call to initialize the Kin client. This is not a preferred method for a production app, but good enough for this exploration.
 
 ```swift
 let kinClient: KinClient! = initializeKinClientOnPlaygroundNetwork()
@@ -113,7 +113,7 @@ func createLocalAccount(kinClient: KinClient) -> KinAccount? {
 
 Once the account has been added, it will be stored locally and can be retrieved the next time the app runs.
 
-You can read more about `.accounts` as part of [Accessing accounts]( http://localhost:3000/docs/documentation/ios-sdk#accessing-accounts).
+You can read more about `.accounts` as part of [Accessing accounts]( ../documentation/ios-sdk#accessing-accounts).
 ### Account identification
 
 Every account on the Kin Blockchain has an associated key pair: public address and private key. Public address is often called public key. The private key is often also called private seed.
