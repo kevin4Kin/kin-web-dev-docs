@@ -13,7 +13,7 @@ Kin SDK for iOS is implemented as a library that can be incorporated into your c
 
 Add the following to your `Podfile`.
 ```
-pod 'KinSDK', '~> 0.8.0’
+pod 'KinSDK', '~> 0.8.1’
 ```
 
 See the latest releases at [github.com/kinecosystem/kin-sdk-ios/releases](https://github.com/kinecosystem/kin-sdk-ios/releases).
@@ -160,7 +160,7 @@ catch let error {
 
 When you create an account using `kinClient.addAccount`, you have created and securely stored a keypair locally but have not yet created an account on the Kin Blockchain. 
 
-The following snippet creates the account on the playground blockchain.
+The following snippet creates the account on the Playground blockchain.
 
 ```swift
 /**
