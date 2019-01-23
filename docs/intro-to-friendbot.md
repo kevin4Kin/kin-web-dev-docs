@@ -15,7 +15,7 @@ Kin SDKs provide classes and methods that allow you to create test accounts and 
 
 Every account on the Kin Blockchain has an associated keypair, including a private key used to sign documents and a public address used to uniquely identify the account on the blockchain.
 
-The online [Kin laboratory](https://laboratory.kininfrastructure.com/#account-creator?network=test) includes a tool that generates valid keypairs for the Kin Blockchain test environment.
+The online [Kin laboratory](https://laboratory.kininfrastructure.com/#account-creator?network=test) includes a tool that generates valid keypairs for the Kin Blockchain.
 
 Go to [the laboratory](https://laboratory.kininfrastructure.com/#account-creator?network=test) and click `Generate keypair`. Copy the public key.
 
@@ -60,7 +60,7 @@ If you have already created an account with the same address, you'll get a messa
 We can check to be sure the new account automatically received Kin by sending the following request to the Horizon server endpoint. Note this is a different endpoint than used to create and fund the account.
 
 ```bash
-curl https://horizon-testnet.stellar.org/accounts/<public address>
+curl http://horizon-testnet.kininfrastructure.com/accounts/<public address>
 ```
 Notice the public address is returned as is the balance of 10,000 KIN.
 
@@ -78,4 +78,4 @@ Notice the public address is returned as is the balance of 10,000 KIN.
   ...
 
   ```
-With a fully funded account on the Kin Blockchain test environment you can debug and optimize the integration of Kin into your service. 
+With a fully funded account on the Kin Blockchain test environment you can debug and optimize the integration of Kin into your service.
