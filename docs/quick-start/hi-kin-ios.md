@@ -276,7 +276,7 @@ The following snippet generates the transaction request and then sends it.
 
 Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks. Fee for individual transactions are trivial (1 KIN = 10E5 FEE).
 
-A whitelist of pre-approved Kin apps have their fee waived. See [Send kin with a whitelist transaction](#send-kin-with-a-whitelist-transaction) for an example.
+A whitelist of pre-approved Kin apps have their fee waived. See [Send Kin with a whitelist transaction](#send-kin-with-a-whitelist-transaction) for an example.
 
 
 ```swift
@@ -446,7 +446,7 @@ The combination of `account.export` and `KinClient.importAccount` is ideal to cr
 This tutorial should have helped you get started with the Kin SDK for iOS. Other topics not covered here are:
 
 - Developing your own back-end server to support your client apps with the [Kin SDK for Python](../documentation/ios-sdk.md)
-- Transition to the production environment, e.g. get an `appId` for your app
+- Transition to the production environment, for example get an `appId` for your app
 
 ## Downloads
 
