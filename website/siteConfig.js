@@ -15,7 +15,7 @@ const users = [
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
     image: '/img/docusaurus.svg',
-    infoLink: 'https://www.facebook.com',
+    infoLink: 'https://kinecosystem.github.io/',
     pinned: true,
   },
 ];
@@ -24,7 +24,7 @@ const siteConfig = {
   title: 'Kin Developer Docs', // Title for your website.
   tagline: 'Let your users earn, spend, and manage Kin.',
   url: 'https://https://kinecosystem.com', // Your website URL
-  baseUrl: '/', // Base URL for your project */
+  baseUrl: '/kin-website-docs/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
@@ -75,6 +75,8 @@ const siteConfig = {
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
     theme: 'default',
+    // theme: 'dark',
+    //theme: 'solarized-light',
   },
 
   // Add custom scripts here that would be placed in <script> tags.
@@ -82,10 +84,10 @@ const siteConfig = {
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
-    '/js/code-block-buttons.js',
+    '/kin-website-docs/js/code-block-buttons.js',
   ],
 
-  stylesheets: ['/css/code-block-buttons.css'],
+  stylesheets: ['/kin-website-docs/css/code-block-buttons.css'],
 
 
   // On page navigation for the current documentation page.
@@ -101,7 +103,7 @@ const siteConfig = {
   // enableUpdateBy: true,
 
   // Show documentation's last update time.
-  // enableUpdateTime: true,
+  enableUpdateTime: true,
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
