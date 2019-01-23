@@ -9,11 +9,11 @@
       "quick-start/hi-kin-python"
     ],
     "Android": [
-      "documentation/android-api",
-      "documentation/android-sdk"
+      "documentation/android-sdk",
+      "documentation/android-api"
     ],
     "iOS": [
-      "documentation/ios-sdk"
+      "documentation/ios-sdk",
       "documentation/ios-api"
     ],
     "Python": [
