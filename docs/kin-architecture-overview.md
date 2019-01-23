@@ -3,7 +3,9 @@ id: kin-architecture-overview
 title: Kin architecture overview
 ---
 
-Welcome to the Kin Developer documentation. Here you'll find everything you need to allow your users to earn, spend, and manage Kin.
+Welcome to the Kin Developer documentation. Here you'll find everything you need to allow your users to earn, spend, and manage Kin. If you are looking to launch an app with Kin, also read about the latest [Kin Developer Program](https://developers.kinecosystem.com/) which offers incentives to integrate Kin. If you are already familiar with the program you can [sign up now](http://bit.ly/2RQpmn3).
+
+
 
 If you're looking for code samples or something specific you can jump right to the [**Quick Start**](quick-start/quick-start.md) or [**Documentation**](documentation/documentation.md) sections.
 
@@ -62,6 +64,14 @@ The Kin Blockchain is a decentralized service optimized for the Kin Ecosystem. K
 - **High throughput.** It's our goal to build with you the most used blockchain in the world, and we made sure our blockchain has the capacity to grow.
 - **Kin Rewards Engine (KRE)**. Each participating developer is compensated by the Kin Foundation for their contribution to the growth of the Kin ecosystem. When the rewards engine goes live it will transfer Kin direction from the foundation to your account on the Kin blockchain.
 - **Low transaction cost.** Like most blockchains, Kin blockchain by default charges a very small fee to execute a transaction. This helps prevent spam and denial of service attacks on the blockchain by unknown and untrusted participants. Kin blockchain technology allows users to avoid blockchain fees if you label all of their transactions with an `appID` and get your app approved by Kin to participate in the Whitelist service.
+
+## appID
+appID is a 4-character string which identifies your application. It must contain only digits and upper and/or lower case letters. appIDs are provided as part of the Kin Developer Program registration process. You may use any valid string in the Playground environment, but in production it is recommended to either leave it empty or use the assigned string.
+
+Developers may have more than one appID, one for each application they manage.
+
+The appID string is automatically added to the `memo` field in each transaction.
+
 
 ## Next steps
 That covers the big picture of the Kin Blockchain architecture. From here we suggest you go to:
