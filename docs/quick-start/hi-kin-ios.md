@@ -116,7 +116,7 @@ Once the account has been added, it will be stored locally and can be retrieved 
 You can read more about `.accounts` as part of [Accessing accounts]( ../documentation/ios-sdk#accessing-accounts).
 ### Account identification
 
-Every account on the Kin Blockchain has an associated key pair: public address and private key. Public address is often called public key. The private key is often also called private seed.
+Every account on the Kin Blockchain has an associated key pair: public address and private key. Public address is often called public key.
 
 The public address is especially useful because this is what is used to identify an account publicly, for example to send or receive Kin.
 
