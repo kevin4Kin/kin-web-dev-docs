@@ -5,7 +5,7 @@ title: Hello World with the Python SDK
 
 With the Kin SDK for Python you can create a server back-end to support your client apps and integrate Kin. If you’re just getting started with Kin ecosystem we suggest you spend a few minutes reading this [overview of the Kin architecture.](../kin-architecture-overview.md)
 
-The following tutorial is meant to run on a server and will serve as a crash course on the basic functionalities of the Kin SDK for Python. As you implement Kin in your service you should wrap this SDK in your back-end services as you see fit. Here we will simply look at the most basic functions of the Kin SDK for Python showing you how to create an account on the Kin blockchain, execute a transaction and read the user's current balance.
+The following tutorial is meant to run on a server and will serve as a crash course on the basic functionalities of the Kin SDK for Python. As you implement Kin in your service you should wrap this SDK in your back-end services as you see fit. Here we will simply look at the most basic functions of the Kin SDK for Python showing you how to create an account on the Kin Blockchain, execute a transaction and read the user's current balance.
 
 This tutorial operates in the Kin Playground environment where you can develop and test your Kin integration.
 
@@ -178,7 +178,7 @@ print('After the transaction the new balance is {}'.format(client.get_account_ba
 ```
 
 ## Conclusions
-This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the between your client apps and the Kin blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
+This was a very short introduction to the Kin SDK for Python. This SDK is meant to run on a server and be the between your client apps and the Kin Blockchain. The SDK provides plenty more features for you to explore including support for channels to maximize your transaction throughput.
 
 ## Downloads
 
