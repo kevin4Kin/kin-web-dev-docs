@@ -13,7 +13,7 @@
       "documentation/android-sdk"
     ],
     "iOS": [
-      "documentation/ios-sdk"
+      "documentation/ios-sdk",
       "documentation/ios-api"
     ],
     "Python": [
