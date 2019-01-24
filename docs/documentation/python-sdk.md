@@ -3,7 +3,7 @@ id: python-sdk
 title: Kin SDK for Python
 ---
 
-The Kin SDK for Python is meant to be used as a back-end service, it can perform some actions for your client apps (iOS, Android, etc.) and also operate as a server for you to build services on top of the Kin blockchain. The SDK can for example take care of communicating with the Kin Blockchain behalf of the client to create accounts and whiltelist transactions and it can also monitor blockchain transactions so that you can implement broader services. It's up to you how to integrate the SDK in your overall architecture and managing server up-time.
+The Kin SDK for Python is meant to be used as a back-end service. It can perform actions for your client apps (iOS, Android, etc.) and also operate as a server for you to build services on top of the Kin blockchain. The SDK can for example take care of communicating with the Kin Blockchain on behalf of the client to create accounts and whitelist transactions. It can also monitor blockchain transactions so that you can implement broader services. It's up to you how to integrate the SDK in your overall architecture and managing server up-time.
 
 ## Requirements.
 
@@ -52,7 +52,7 @@ from kin import Environment
 MY_CUSTOM_ENVIRONMENT = Environemnt('name','horizon endpoint','network passphrase','friendbot url'(optional))
 ```
 
-Once you have a KinClient, you can use it to get a KinAccount object.
+Once you have a KinClient, you can use it to get a KinAccount object and its associated keypair. The Kin SDK for Python generates a keypair based on a secret `seed`. There is a unique relationship between seed and keypair; if you save a secret seed you can regenerate the associated keypair.
 
 The KinAccount object can be initialized in two ways:
 
@@ -134,7 +134,8 @@ tx_hash = account.create_account('address', starting_balance=1000, fee=100, memo
 ```
 
 #### Account Details
- Each account on the Kin blockchain is composed of the public address and a secret seed (often also referred as public and private key).
+ Each account on the Kin blockchain has a public address. The address is identical to the public portion of the keypair created during account creation.
+
 ```python
 address = account.get_public_address()
 ```
@@ -248,9 +249,9 @@ account.get_status(True)
 ```
 
 #### Keypairs
-Earlier we talked about public address and secret seed, here are a few convenient functions to generate the keypairs.
+Earlier we talked about the relationship between keypairs and secret seeds. Here are a few associated functions.
 
-###### Create a new keypair
+###### Creating a new keypair
 ```python
 from kin import Keypair
 
