@@ -414,6 +414,20 @@ func signWhitelistTransaction(whitelistServiceUrl: String,
 }
 ```
 
+## Add funds to an account
+
+As you test your app, eventually the initial value of Kin put in an account upon creation may be depleted. When it's time to add funds, you can turn back to Friendbot for more.
+
+The [ViewController.swift](ViewController.swift) example shows how to add additional funds: 
+
+```swift
+private func fund(amount: Kin) -> Promise<Bool> {
+        let p = Promise<Bool>()
+        let url = URL(string: "http://friendbot-testnet.kininfrastructure.com/fund?addr=\(kinAccount.publicAddress)&amount=\(amount)")!
+...
+```
+
+
 ## Export an account
 
 Once an account has been added to the `KinClient`, its information is securely stored  locally. If you want to use
