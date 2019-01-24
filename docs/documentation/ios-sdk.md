@@ -127,7 +127,7 @@ catch let error {
 
 Deleting an account means removing the account data stored locally.
 
-**Note:** If the account has not been backed up previously by exporting it, the locally-stored keypair will be lost and the Kin stored in the account will be inaccessible.
+**Warning:** If the account has not been backed up previously by exporting it, the locally-stored keypair will be lost and the Kin stored in the account will be inaccessible.
 
 Deleting the first account:
 ```swift
@@ -282,6 +282,7 @@ Executing whitelisted transactions adds two steps to the process:
 - **Send** the `WhitelistEnvelope` to a whitelist service which will sign and return a new `TransactionEnvelope`.
 - **Send** the transaction for execution on the blockchain.
 
+
 Here's how you create a `WhitelistEnvelope` from a `TransactionEnvelope` and Network ID:
 
 ```swift
@@ -289,6 +290,9 @@ init(transactionEnvelope: TransactionEnvelope, networkId: Network.Id)
 ```
 
 Then you send the `WhitelistEnvelope` to a server for signing. The server response should be a  `TransactionEnvelope` with a second signature, which can then be sent to a Horizon server for execution on the blockchain.  
+
+
+**Note:** In a production environment, the server to which you send the `WhitelistEnvelope` for signing is your back-end server running the Kin SDK for Python. See [Transferring Kin to another account using whitelist service](../documentation/python-sdk#transferring-kin-to-another-account-using-whitelist-service) for more information.
 
 ```swift
 func sendTransaction(_ transactionEnvelope: TransactionEnvelope,

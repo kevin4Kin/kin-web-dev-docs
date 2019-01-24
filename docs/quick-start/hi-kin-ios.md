@@ -17,7 +17,7 @@ Add `pod 'KinSDK', '~> 0.8.1’` to your `Podfile` then run `pod install`. We us
 
 Make sure you have the latest release of the Kin SDK for iOS by checking the release page [github.com/kinecosystem/kin-sdk-ios/releases](https://github.com/kinecosystem/kin-sdk-ios/releases).
 
-Close the Xcode project and open it again. When you open Xcode choose to `open another project` and choose the `.xcworkspace` file instead of the `.xcodeproj` file. As Xcode reopens you will have your project files and on the left you'll notice a new section called `Pods` on the bottom. The `KinSDK` will be listed in the Pods sub-folder.
+Close the Xcode project and open the newly created workspace file (in the same directory as your previous project file.). When you open Xcode choose to `open another project` and choose the `.xcworkspace` file instead of the `.xcodeproj` file. As Xcode reopens you will see your project files. On the left you'll notice a new section called `Pods` on the bottom. The `KinSDK` will be listed in the Pods sub-folder.
 
 
 ## Environments
@@ -88,7 +88,7 @@ Creating an account is a two step process in Kin. The first step is to create a 
 
 ### Check and create an account
 
-If an account is available from the local store, it can be loaded with `let account = kinClient.accounts.first`.
+If an account is available from the local store, it can be retrieved with `let account = kinClient.accounts.first`.
 
 In view controller you can create a new function for this:
 ```swift
@@ -120,7 +120,7 @@ Every account on the Kin Blockchain has an associated key pair: public address a
 
 The public address is especially useful because this is what is used to identify an account publicly, for example to send or receive Kin.
 
-In Swift the account's public address can retrieved easily with `.publicAddress`.
+In Swift the account's public address can be retrieved easily with `.publicAddress`.
 
 ```swift
 var publicAddress: String = account.publicAddress
@@ -128,9 +128,9 @@ var publicAddress: String = account.publicAddress
 
 ### Delete a stored account
 
-If you want to make sure there are no account stored locally, delete the accounts from the `KinClient`.
+If you want to make sure there are no accounts stored locally, delete the accounts from the `KinClient`.
 
-:warning: If the account has not been backed up previously by exporting the key pair, it will be lost and its Kin will be inaccessible.
+**Warning:** If you delete an account that has not been backed up previously by exporting it, the locally-stored keypair will be lost and the Kin stored in the account will be inaccessible.
 
 ```swift
 /**
@@ -274,7 +274,7 @@ Provided the account has been created and funded in the Playground environment, 
 
 The following snippet generates the transaction request and then sends it.
 
-Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks. Fee for individual transactions are trivial (1 KIN = 10E5 Stroop).
+Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks. Fee for individual transactions are so trivial they are specified in `Stroop`, where (1 KIN = 10E5 Stroop).
 
 A whitelist of pre-approved Kin apps have their fee waived. See [Send Kin with a whitelist transaction](#send-kin-with-a-whitelist-transaction) for an example.
 
@@ -321,11 +321,9 @@ The `memo` parameter is a UTF-8 string with 21 bytes dedicated to developer use.
 
 ## Send Kin with a whitelist transaction
 
-A preapproved list of Kin apps have their fee waived. When sending
-transactions for an app that is Whitelisted, an additional step is
-necessary have the transaction signed by a whitelist service.
+A preapproved list of Kin apps have their fee waived. When sending transactions for an app that is Whitelisted, an additional two steps are necessary to have the transaction signed by a whitelist service.
 
-The steps are thus the following:
+The steps to send a whitelisted transaction to the Horizon server for processing are:
 
 - Build the transaction request, which returns a `TransactionEnvelope` object if successful
 - Create a `WhitelistEnvelope`, passing the generated envelope and the network ID of the client
@@ -385,7 +383,9 @@ func sendWhitelistTransaction(fromAccount account: KinAccount,
 }
 ```
 
-Below is the snippet that signs the transaction. Note that the example uses `whitelistServiceUrl`, which in a production environment will point to your back-end server. To implement the whitelisting service you will have to setup your own service using the Kin SDK for Python. See [Transferring Kin to another account using whitelist service](../documentation/python-sdk#transferring-kin-to-another-account-using-whitelist-service) for more information on how to whitelist a transaction.
+Below is the snippet that signs the transaction. In the example `whitelistServiceUrl` points to the server authorized to approve the whitelisted transaction. In a production environment this will be  your back-end server.
+
+**Note:** To implement the whitelisting service you will have to set up your own service using the Kin SDK for Python. See [Transferring Kin to another account using whitelist service](../documentation/python-sdk#transferring-kin-to-another-account-using-whitelist-service) for more information on how to whitelist a transaction.
 
 ```swift
 /**
@@ -424,7 +424,7 @@ To import it later you just need the JSON and the same passphrase.
 ```swift
 // Exports the account to a JSON string with the given passphrase. You can later import the account with the
 // same passphrase and the JSON string.
-let json = try! account.export(passphrase: “a-secret-passphrase-here”)
+let json = try! account.export(passphrase: 'a-secret-passphrase-here')
 print("Exported JSON \n\(json)\n")
 ```
 
