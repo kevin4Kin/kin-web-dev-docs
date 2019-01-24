@@ -123,7 +123,7 @@ The public address is especially useful because this is what is used to identify
 In Swift the account's public address can retrieved easily with `.publicAddress`.
 
 ```swift
-account.publicAddress
+var publicAddress: String = account.publicAddress
 ```
 
 ### Delete a stored account

@@ -206,7 +206,7 @@ func createPlaygroundAccountOnBlockchain(account: KinAccount, completionHandler:
 A Kin account is identified via the public-address half of its keypair. Retrieve this string with `publicAddress`.
 
 ```swift
-var publicAddress: String
+var publicAddress: String = account.publicAddress
 ```
 
 Before an account can be used on the blockchain it must be funded with some Kin. When working in the playground environment, funding occurs via the Friendbot service. In the production environment, initial funding of user accounts is typically provided by developers like you from funds provided by Kin Foundation. For more information see [Friendbot](../kin-architecture-overview#friendbot)
