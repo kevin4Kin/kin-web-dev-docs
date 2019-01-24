@@ -348,7 +348,7 @@ func watchPayments(cursor: String?) throws -> PaymentWatch
 
 ### Error handling
 
-Kin SDK for iOS wraps errors in extensions of methods of `KinAccount`, e.g. `StellarError.missingAccount`.
+Kin SDK for iOS wraps errors in extensions of methods of `KinAccount`, for example `StellarError.missingAccount`.
 
 The underlying error is the actual cause of failure.
 
