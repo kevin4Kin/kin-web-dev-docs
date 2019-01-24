@@ -209,7 +209,7 @@ A Kin account is identified via the public-address half of its keypair. Retrieve
 var publicAddress: String
 ```
 
-Before an account can be used on the blockchain it must be funded with some Kin. When working in the playground environment, funding occurs via the Friendbot service. In the production environment, initial funding of user accounts is typically provided by developers like you from funds provided by Kin Foundation. A full treatment of friendbot, funding, and opportunities for you to earn Kin from the Kin Foundation are beyond the scope of this article.
+Before an account can be used on the blockchain it must be funded with some Kin. When working in the playground environment, funding occurs via the Friendbot service. In the production environment, initial funding of user accounts is typically provided by developers like you from funds provided by Kin Foundation. For more information see [Friendbot](../kin-architecture-overview#friendbot)
 
 ### Kin account status
 
@@ -259,7 +259,7 @@ func generateTransaction(to recipient: String,
 - `recipient` is the recipient's public address.
 - `kin` is the amount of Kin to be sent.
 - `memo` is an optional string, up-to 28 bytes in length, included on the transaction record. A typical usage is to include an order number..
-- `fee` The fee in `Stroop`s used if the transaction is not whitelisted.
+- `fee` The fee in `Stroop`s used if the transaction is not whitelisted. (1 KIN = 10E5 Stroop.)
 - `completion` callback method called with the `TransactionEnvelope` and `Error`.
 
 ##### Send the transaction

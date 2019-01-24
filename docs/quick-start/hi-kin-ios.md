@@ -274,7 +274,7 @@ Provided the account has been created and funded in the Playground environment, 
 
 The following snippet generates the transaction request and then sends it.
 
-Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks. Fee for individual transactions are trivial (1 KIN = 10E5 FEE).
+Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks. Fee for individual transactions are trivial (1 KIN = 10E5 Stroop).
 
 A whitelist of pre-approved Kin apps have their fee waived. See [Send Kin with a whitelist transaction](#send-kin-with-a-whitelist-transaction) for an example.
 
