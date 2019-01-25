@@ -54,7 +54,7 @@ KinClient(with: URL, network: Network, appId: AppId)
 
 - `with` The URL of the Horizon server providing access to the Kin Blockchain
 - `network` You declare which Kin Blockchain network you want to work with using the predefined enum value `Network.mainNet` or `Network.playground`.
-- `appId` must be a 4-character string which identifies your application. It must contain only digits and upper and/or lower case letters.
+- `appId` is a 4-character string assigned to you by Kin and used to identify your application. It contains only digits and upper and/or lower case letters.
 
 For instance, to initialize a Kin Client to use the Playground network.
 ```swift
@@ -127,7 +127,7 @@ catch let error {
 
 Deleting an account means removing the account data stored locally.
 
-**Note:** If the account has not been backed up previously by exporting it, it will be lost and its Kin inaccessible.
+**Warning:** If the account has not been backed up previously by exporting it, the locally-stored keypair will be lost and the Kin stored in the account will be inaccessible.
 
 Deleting the first account:
 ```swift
@@ -206,10 +206,10 @@ func createPlaygroundAccountOnBlockchain(account: KinAccount, completionHandler:
 A Kin account is identified via the public-address half of its keypair. Retrieve this string with `publicAddress`.
 
 ```swift
-var publicAddress: String
+var publicAddress: String = account.publicAddress
 ```
 
-Before an account can be used on the blockchain it must be funded with some Kin. When working in the playground environment, funding occurs via the Friendbot service. In the production environment, initial funding of user accounts is typically provided by developers like you from funds provided by Kin Foundation. A full treatment of friendbot, funding, and opportunities for you to earn Kin from the Kin Foundation are beyond the scope of this article.
+Before an account can be used on the blockchain it must be funded with some Kin. When working in the playground environment, funding occurs via the Friendbot service. In the production environment, initial funding of user accounts is typically provided by developers like you from funds provided by Kin Foundation. For more information see [Friendbot](../kin-architecture-overview#friendbot)
 
 ### Kin account status
 
@@ -234,7 +234,7 @@ func balance(completion: @escaping BalanceCompletion)
 
 To transfer Kin to another account, you need the public address of the account to which you want to transfer Kin.
 
-Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks.  Fee for individual transactions are trivial (1 KIN = 10E5 Fee).
+Like most blockchains, by default every transaction on the Kin Blockchain is charged a fee to execute. This discourages blockchain spam and denial of service attacks.  Fee for individual transactions are trivial.
 
 A whitelist of pre-approved Kin apps have their fee waived. See [Send Whitelisted Transaction](#send-kin-with-a-whitelist-transaction-fee-waived) for an example.
 
@@ -258,8 +258,8 @@ func generateTransaction(to recipient: String,
 
 - `recipient` is the recipient's public address.
 - `kin` is the amount of Kin to be sent.
-- `memo` is an optional string, up-to 28 bytes in length, included on the transaction record. A typical usage is to include an order number..
-- `fee` The fee in `Stroop`s used if the transaction is not whitelisted.
+- `memo` is a UTF-8 string with 21 bytes dedicated to developer use. Developers are free to enter any information that is useful to them, for instance to specify an order number. The `appId` is automatically added to the memo field.
+- `fee` The fee in `Stroop` used if the transaction is not whitelisted. (1 KIN = 10E5 Stroop.)
 - `completion` callback method called with the `TransactionEnvelope` and `Error`.
 
 ##### Send the transaction
@@ -275,20 +275,24 @@ func sendTransaction(_ transactionEnvelope: TransactionEnvelope,
 #### Send Kin with a Whitelist transaction (Fee waived)
 The following paragraphs describe the process of whitelisting a transaction. If you want to skip the explanation and jump straight to a code example, see [Send Kin with a whitelist transaction](../quick-start/hi-kin-ios#send-kin-with-a-whitelist-transaction) code included in the [Hello World for iOS](../quick-start/hi-kin-ios) tutorial.
 
-Transactions are executed on the Kin Blockchain in a two-step process:
+Executing whitelisted transactions adds two steps to the process:
 
 - **Build** the transaction which includes the calculation of the transaction hash. The transaction hash is used as an ID and is necessary to query the status of the transaction.
 - Create a `WhitelistEnvelope`
-- **Send** the `WhitelistEnvelope` to a whitelist service which will sign and return an new `TransactionEnvelope`.
+- **Send** the `WhitelistEnvelope` to a whitelist service which will sign and return a new `TransactionEnvelope`.
 - **Send** the transaction for execution on the blockchain.
 
-Pass the returned `TransactionEnvelope` to the `WhitelistEnvelope`.
+
+Here's how you create a `WhitelistEnvelope` from a `TransactionEnvelope` and Network ID:
 
 ```swift
 init(transactionEnvelope: TransactionEnvelope, networkId: Network.Id)
 ```
 
-The `WhitelistEnvelope` should be passed to a server for signing. The server response should be a  `TransactionEnvelope` with a second signature, which can then be sent.
+Then you send the `WhitelistEnvelope` to a server for signing. The server response should be a  `TransactionEnvelope` with a second signature, which can then be sent to a Horizon server for execution on the blockchain.  
+
+
+**Note:** In a production environment, the server to which you send the `WhitelistEnvelope` for signing is your back-end server running the Kin SDK for Python. See [Transferring Kin to another account using whitelist service](../documentation/python-sdk#transferring-kin-to-another-account-using-whitelist-service) for more information.
 
 ```swift
 func sendTransaction(_ transactionEnvelope: TransactionEnvelope,
