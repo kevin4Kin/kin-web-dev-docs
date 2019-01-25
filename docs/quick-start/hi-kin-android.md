@@ -32,7 +32,7 @@ One of the first statements executed when the app is created connects to the tes
 ```
 `Environment.TEST` is a public static variable that includes `networkURL`, `networkPassphrase`, and `issuerAccountID`. `networkURL` is the location of a [Horizon server](../kin-architecture-overview.md/#horizon-servers) providing access to the test blockchain.
 
-Once your app is in production you will replace `STUB_APP_ID` with your `appId`, a 4-character string assigned to you by Kin and used to identify your application. It contains only digits and upper and/or lower case letters.
+`STUB_APP_ID` should be replaced with your `appId` once your app is in production. An `appID` a 4-character string assigned to you by Kin and used to identify your application. It contains only digits and upper and/or lower case letters.
 
 Your `appID` is automatically added to the `memo` field. For more information see the [executing a transaction](#executing-a-transaction) section.
 
