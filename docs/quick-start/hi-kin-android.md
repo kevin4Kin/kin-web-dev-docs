@@ -22,7 +22,7 @@ With that out of the way, we can start looking at the code.
 
 **Note:** As of this writing we have tested the Hello World for Android app using Android Studio 3.2 and emulators running Android API level 26.
 
-## Connect to Kin Blockchain
+## Connecting to Kin Blockchain
 
 One of the first statements executed when the app is created connects to the test environment of the Kin Blockchain.
 
@@ -32,11 +32,11 @@ One of the first statements executed when the app is created connects to the tes
 ```
 `Environment.TEST` is a public static variable that includes `networkURL`, `networkPassphrase`, and `issuerAccountID`. `networkURL` is the location of a [Horizon server](../kin-architecture-overview.md/#horizon-servers) providing access to the test blockchain.
 
-<<<<<<< HEAD
-`STUB_APP_ID` should be replaced with your `appID`, a four-character string added to all transactions posted to the blockchain. It identifies the service to which a transaction should be credited. Those credits will produce rewards for your organization when the Kin Rewards Engine is live. In the Playground you can use any four-character string. The `appID` is automatically added to the `memo` field (more on this later).
-=======
-`STUB_APP_ID` should be replaced with your `appID` and it's a four-character string added to all transactions posted to the blockchain. It identifies the service to which that transaction should be credited. Those credits will produce rewards for your organization when the Kin Rewards Engine is live. In the Playground you can use any four-character string. The `appID` is automatically added to the `memo` field (more on this later).
->>>>>>> 04dd9266644da396b46d7f83c39de41cc60cca2d
+Once your app is in production you will replace `STUB_APP_ID` with your `appId`, a 4-character string assigned to you by Kin and used to identify your application. It contains only digits and upper and/or lower case letters.
+
+Your `appID` is automatically added to the `memo` field. For more information see the [executing a transaction](#executing-a-transaction) section.
+
+While you are testing your integration in the Kin Playground environment you can use any string of four characters as long as you only use digits and upper or lower case letters.
 
 ## KinClient
 The `KinClient` class contains methods for managing accounts on the Kin Blockchain. To explore those methods, place your cursor on `KinClient` and press `ctl-q` on Windows or `ctl-J` on Mac to produce:
@@ -144,7 +144,9 @@ Blockchain charges are demoninated in Fee, where 1 KIN = 10E5 FEE.
 
 Not all blockchain transactions are charged Fee. Some apps (identified by `appID`) can be placed on a Whitelist, allowing users to execute transactions without being charged. Whitelisting requires a live app server and is beyond the scope of this Hello World client overview.
 
-## Transaction ID
+For more information on Whitelisting transactions see [transferring Kin to another account using whitelist service](../documentation/android-sdk.md/#transferring-kin-to-another-account-using-whitelist-service).
+
+## Executing a transaction
 
 Every transaction added to the Kin Blockchain includes a unique identification that is the hash of the transaction payload.
 
@@ -152,15 +154,12 @@ Notice how the `transferKin` function builds the transaction request locally, re
 
 Knowing the transaction ID in advance of sending the request is important for exception handling. For example, it is possible to experience a network outage after a request is successfully sent but before any callback is received. When network access is restored you can query the blockchain for the status of the transaction in question to determine next steps.
 
-<<<<<<< HEAD
 In this function we use two methods of the Kin SDK:
-=======
-In this function we use two method of the Kin SDK:
->>>>>>> 04dd9266644da396b46d7f83c39de41cc60cca2d
+
 - `buildTransaction` builds the transaction locally and expects 4 parameters, the recipient's public address, the amount of Kin to transfer, the fee and a memo
 - `sendTransaction` only expects the `transaction` object returned by buildTransaction.
 
-The memo field allows developers to add a note to any transaction and accepts up to 21 characters. The `appID` is automatically added to all transactions in the memo field as well.
+The `memo` field allows developers to add a note to any transaction and accepts up to 21 characters. The `appID` is automatically added to all transactions in the memo field.
 
 ```java
    public void transferKin(KinAccount sender, String targetPublicAddress, BigDecimal amountInKin) {
