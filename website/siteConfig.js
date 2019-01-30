@@ -10,49 +10,50 @@
 
 // List of projects/orgs using your project for the users page.
 const users = [
-  {
-    caption: 'User1',
-    // You will need to prepend the image path with your baseUrl
-    // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/docusaurus.svg',
-    infoLink: 'https://kinecosystem.github.io/',
-    pinned: true,
-  },
+  // {
+  //   caption: 'User1',
+  //   // You will need to prepend the image path with your baseUrl
+  //   // if it is not '/', like: '/test-site/img/docusaurus.svg'.
+  //   image: '/img/docusaurus.svg',
+  //   infoLink: 'https://kinecosystem.github.io/',
+  //   pinned: true,
+  // },
 ];
 
 const siteConfig = {
-  title: 'Kin Developer Docs', // Title for your website.
+  title: 'Kin SDK Docs', // Title for your website.
   tagline: 'Let your users earn, spend, and manage Kin.',
-  url: 'https://https://kinecosystem.com', // Your website URL
+  url: 'https://kinecosystem.github.io', // Your website URL
   baseUrl: '/kin-website-docs/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'Kin Developer Docs',
-  organizationName: 'Kin Foundation',
+  projectName: 'kin-website-docs',
+  organizationName: 'Kin',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-
+    { search: true },
   ],
 
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/kin-logo.png',
-  footerIcon: 'img/kin-logo.png',
-  favicon: 'img/kin-logo.png',
+  headerIcon: 'img/Kin_ecosystem_logo.svg',
+  footerIcon: 'img/Kin_ecosystem_logo.svg',
+  favicon: 'img/favicon.png',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#303E9F',
-    secondaryColor: '#205C3B',
+    primaryColor: '#303F9F',
+    secondaryColor: '#1392C9',
+    backgroundColor: '#373B44',
   },
 
   /* Custom fonts for website */
@@ -96,8 +97,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/kin.svg',
+  twitterImage: 'img/kin.svg',
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
