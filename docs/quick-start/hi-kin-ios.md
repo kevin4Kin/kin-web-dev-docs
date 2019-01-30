@@ -462,6 +462,8 @@ This tutorial should have helped you get started with the Kin SDK for iOS. Other
 - Developing your own back-end server to support your client apps with the [Kin SDK for Python](../documentation/ios-sdk.md)
 - Transition to the production environment, for example get an `appId` for your app
 
-## Downloads
 
-See all the code for this tutorial in [ViewController.swift](ViewController.swift)
+[//]: # (## Downloads)
+
+[//]: # (See all the code for this tutorial in ViewController.swift)
+
