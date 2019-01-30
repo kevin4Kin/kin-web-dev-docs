@@ -2,7 +2,8 @@
   "docs": {
     "Introduction": [
       "kin-architecture-overview",
-      "intro-to-friendbot"
+      "intro-to-friendbot",
+      "appid"
     ],
     "Quick Start": [
       "quick-start/hi-kin-android",
